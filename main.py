@@ -1,14 +1,11 @@
-from os import sync
-from typing import Union
-
+from lib import rss
 from fastapi import FastAPI
 
 
 app = FastAPI()
 
-dataBase = dict()
 
-@app.get("/")
-async def root():
-    return {"ALERT": "Hello, World"}
-
+@app.get("/post")
+async def post_news():
+    content = rss.Post()
+    return content.get_post()
