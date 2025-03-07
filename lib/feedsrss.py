@@ -52,4 +52,3 @@ class Post:
         for post in all_posts:
             if access_id == post['id']:
                 return dict(post)
-
