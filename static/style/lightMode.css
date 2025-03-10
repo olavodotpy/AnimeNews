@@ -1,0 +1,16 @@
+.button-alterar-dark-mode {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+}
+
+.div-dark-mode {
+    text-align: end;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border: 0;
+    margin: 20px auto;
+    padding: 50px;
+    z-index: 1000;
+}

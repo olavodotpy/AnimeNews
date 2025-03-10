@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeNews</title>
+    <link rel="stylesheet" href="/static/style/buttonHome.css">
+    <link rel="stylesheet" href="/static/style/lightMode.css">
+  </head>
+  <body>
+
+    <div class="div-button-blog-home" style="overflow: hidden;">
+        <button onclick="window.location.href='/'" class="button-blog-home">HOME</button>
+    </div>
+
+    <div class="div-dark-mode">
+      <button id="darkMode" class="button-alterar-dark-mode">
+          <img src="/static/image/light-mode.png" alt="Dark mode button">
+      </button>
+    </div>
+
+
+    <h1>Ultimas Notícias</h1>
+    <div class="hud">
+      <div class="cards">
+        {% for post in posts %}
+        <div class="card"> 
+          <a href="/post/{{ post.id }}">
+            <h2> {{ post.title }} </h2>
+          </a>
+          <p> {{ post.description }} </p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <script src="/static/js/lightMode.js"></script>
+  </body>
+</html>

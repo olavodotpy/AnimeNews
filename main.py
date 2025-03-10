@@ -1,19 +1,48 @@
-from lib import feedsrss
-from fastapi import FastAPI
+from lib.feedsrss import Posts
+from fastapi import FastAPI, Request
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 
 
 app = FastAPI()
-rss = feedsrss.Post()
+feed = Posts()
+templates = Jinja2Templates(directory="templates")
 
+app.mount(
+    "/static",
+    StaticFiles(directory="static"),
+    name="static",
+)
 
-
-@app.get("/posts")
+@app.get("/api/posts")
 async def get_feeds():
-    return rss.get_posts()
+    return feed.get_posts()
 
 
-@app.get("/post/{post_id}")
+@app.get("api/post/{post_id}")
 async def get_feeds_by_id(post_id: int):
-    post = rss.get_post_by_id(post_id)
-
+    post = feed.get_post_by_id(post_id)
     return post
+
+
+@app.get("/")
+async def home(request: Request):
+    return templates.TemplateResponse(
+            "index.html", 
+            {
+                "request": request,
+                "posts": feed.get_posts(),
+            }
+        )
+
+
+@app.get("/post/{id}")
+async def posts(request: Request, id: int):
+    post = feed.get_post_by_id(id)
+    return templates.TemplateResponse(
+            "post.html",
+            {
+                "request": request,
+                "post": post,    
+            }
+        )

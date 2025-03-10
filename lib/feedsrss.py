@@ -3,14 +3,12 @@ import feedparser
 
 RSS_URL = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
 
-
 def get_parser(rss_url):
     response = feedparser.parse(rss_url)
     return response.entries
 
 
-
-class Post:
+class Posts:
 
     def __init__(self) -> None:
         pass
@@ -39,7 +37,6 @@ class Post:
 
         
         return list_post 
-
 
 
     def get_post_by_id(self, access_id: int):
