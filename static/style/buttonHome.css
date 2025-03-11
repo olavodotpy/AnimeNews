@@ -1,10 +1,9 @@
-.body-home {
-    padding: 0px;
-    margin: 0px;
-    background-color: white;
+:root {
+    --backg-button-home: #f7f7f7;
+    --color-button-home: #0e0e0e;
 }
 
-.div-button-blog-home {
+.div_button_home {
     display: flex;
     align-items: center;
     justify-content: left;
@@ -18,18 +17,21 @@
     background-color: gray;
 }
 
-.button-blog-home {
+.div_button_home button:hover {
+    background-color: gray;
+}
+
+.button_home {
     font-size: xx-large;
     text-align: center;
     cursor: pointer;
     z-index: 1000;
     top: 0;
-    width: 600px;
+    width: 330px;
     height: 50px;
-    background-color: white;
+    background: var(--backg-button-home);
+    color: var(--color-button-home);
     color: black;
-}
-
-.div-button-blog-home button:hover {
-    background-color: gray;
+    border: 0;
+    border-color: transparent;
 }

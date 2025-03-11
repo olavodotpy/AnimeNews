@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {{ post.title }} </title>
     <link rel="stylesheet" href="/static/style/buttonHome.css">
     <link rel="stylesheet" href="/static/style/lightMode.css">
+    <link rel="stylesheet" href="/static/style/style.css">
+    <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
 </head>
 <body>
 
-    <div class="div-button-blog-home" style="overflow: hidden;">
-        <button onclick="window.location.href='/'" class="button-blog-home">HOME</button>
-    </div>
-
-    <div class="div-dark-mode">
-        <button id="darkMode" class="button-alterar-dark-mode">
-            <img src="/static/image/light-mode.png" alt="Dark mode button">
+    <div class="div_button_home" style="overflow: hidden;">
+        <button onclick="window.location.href='/'" class="button_home">
+            <p class="text">Últimas Notícias</p>
         </button>
     </div>
 
-    <div class="hud">
+    <div class="div_lightmode">
+        <button id="lightmode" class="button_lightmode">
+            <img src="/static/image/light-mode.png" alt="lightmode">
+        </button>
+    </div>
+
+    <div class="field">
         <h2> {{ post.title }} </h2>
         <h3> {{ post.description }} </h3>
         <img src="{{ post.media }}" alt="MEDIA">
