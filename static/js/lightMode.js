@@ -14,7 +14,7 @@ lightmode.addEventListener('click', function(){
         document.documentElement.style.setProperty('--card-backg', '#191919');
         document.documentElement.style.setProperty('--card-info-color', '#ffffff');
 
-        const font_elementos = document.querySelectorAll(".text");
+        const font_elementos = document.querySelectorAll(".text_color");
         font_elementos.forEach(font_elementos => {
             font_elementos.style.color = '#ffffff';
         });
@@ -29,7 +29,7 @@ lightmode.addEventListener('click', function(){
         document.documentElement.style.setProperty('--card-backg', '#ffffff');
         document.documentElement.style.setProperty('--card-info-color', '#0e0e0e');
         
-        const font_elementos = document.querySelectorAll(".text");
+        const font_elementos = document.querySelectorAll(".text_color");
         font_elementos.forEach(font_elementos => {
             font_elementos.style.color = '#000';
         });

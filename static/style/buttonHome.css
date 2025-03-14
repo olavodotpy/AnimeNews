@@ -17,10 +17,6 @@
     background-color: gray;
 }
 
-.div_button_home button:hover {
-    background-color: gray;
-}
-
 .button_home {
     font-size: xx-large;
     text-align: center;
@@ -31,7 +27,11 @@
     height: 50px;
     background: var(--backg-button-home);
     color: var(--color-button-home);
-    color: black;
     border: 0;
     border-color: transparent;
+    transition: .5s;
+}
+
+.div_button_home button:hover {
+    background-color: gray;
 }

@@ -12,29 +12,33 @@
   </head>
   <body>
 
-    <div class="div_button_home" style="overflow: hidden;">
+    <header>
+      <div class="div_button_home" style="overflow: hidden;">
         <button onclick="window.location.href='/'" class="button_home">
-          <p class="text">Útimas Notícias</p>
+          <p class="text_color">Útimas Notícias</p>
         </button>
-    </div>
+      </div>
 
-    <div class="div_lightmode">
-      <button id="lightmode" class="button_lightmode">
+      <div class="div_lightmode">
+        <button id="lightmode" class="button_lightmode">
           <img src="/static/image/light-mode.png" alt="lightmode">
-      </button>
-    </div>
+        </button>
+      </div>
+    </header>
 
-    {% for post in posts %}
-    <div class="blog_wrap">
-      <div class="blog_item">
-        <a href="/post/{{ post.id }}" class="thumb"><img src="{{ post.media }}" alt="media"></a>
-        <div class="blog_info">
-          <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
-          <h3>{{ post.description }}</h3>
+    <nav>
+      {% for post in posts %}
+      <div class="blog_wrap">
+        <div class="blog_item">
+          <a href="/post/{{ post.id }}" class="thumb"><img src="{{ post.media }}" alt="media"></a>
+          <div class="blog_info">
+            <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+            <h3>{{ post.description }}</h3>
+          </div>
         </div>
       </div>
-    </div>
-    {% endfor %}
+      {% endfor %}
+    </nav>
 
     <script src="/static/js/lightMode.js"></script>
   </body>
