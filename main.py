@@ -2,6 +2,8 @@ from lib.feedsrss import Posts
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+import os
+import uvicorn
 
 
 app = FastAPI()
@@ -46,3 +48,7 @@ async def posts(request: Request, id: int):
                 "post": post,    
             }
         )
+
+
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
