@@ -4,11 +4,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import os
 import uvicorn
+from dotenv import load_dotenv
 
 
 app = FastAPI()
 feed = Posts()
 templates = Jinja2Templates(directory="templates")
+load_dotenv()
 
 app.mount(
     "/static",
@@ -50,5 +52,5 @@ async def posts(request: Request, id: int):
         )
 
 
-# if __name__ == "__main__":
-#     uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT", default=5000), log_level="info")
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT"), log_level="info")

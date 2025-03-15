@@ -37,4 +37,4 @@ execute ```main.py``` usando o fastapi:
 
 ```fastapi dev main.py```
 
-Faça uma boa implementação e envie um para essa mesma branch PR 😊
+Faça uma boa implementação e envie um PR para a branch develop 😊
