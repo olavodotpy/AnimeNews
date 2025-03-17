@@ -171,6 +171,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-
-#develop
-README-develop.md
