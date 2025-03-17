@@ -1,0 +1,30 @@
+:root {
+    --color-backg: #f7f7f7;
+    --color: #0e0e0e;
+}
+
+.gray_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    height: 50px;
+    background-color: gray;
+}
+
+.button_home {
+    font-size: xx-large;
+    text-align: center;
+    cursor: pointer;
+    width: 330px;
+    height: 50px;
+    background: var(--color-backg);
+    color: var(--color);
+    border: 0;
+    border-color: transparent;
+    transition: .5s;
+}
+
+.gray_bar button:hover {
+    background-color: gray;
+}

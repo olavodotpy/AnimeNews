@@ -1,7 +1,9 @@
 # Byte-compiled / optimized / DLL files
+src
 __pycache__/
 *.py[cod]
 *$py.class
+test.py
 
 # C extensions
 *.so
@@ -14,7 +16,6 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -135,6 +136,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+venv.env
 
 # Spyder project settings
 .spyderproject
@@ -169,3 +171,6 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+#develop
+README-develop.md

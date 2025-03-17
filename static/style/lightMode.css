@@ -1,0 +1,14 @@
+.div_lightmode {
+    display: flex;
+    text-align: end;
+    border: 0;
+    gap: 1rem;
+    padding-right: 30px;
+}
+
+.button_lightmode {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 10px;
+}

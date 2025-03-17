@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+:root {
+    --card-backg:  #ffffff;
+    --card-info-color: #0e0e0e;
+
+}
+
+button:focus, input:focus, textarea:focus {
+    outline: 0;
+}
+
+.blog_wrap {
+    width: 390px;
+    margin: 80px auto;
+}
+
+.blog_item {
+    background: var(--card-backg);
+    box-shadow: 0 5px 3px rgb(3 27 78 / 8%);
+    overflow: hidden;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.blog_item:hover {
+    transform: translate(-10px);
+}
+
+.blog_item .thumb {
+    padding: 15px;
+    display: block;
+}
+
+.blog_item .thumb img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.blog_info {
+    padding: 0 30px 30px 30px;
+}
+
+.blog_info h2 {
+    font-size: 24px;
+    color: var(--card-info-color);
+    line-height: 30px;
+    margin: 15px 0;
+    transition: .3s;
+}
+
+.blog_info h2 a {
+    transition: .3s;
+}
+
+.blog_info h2:hover a {
+    color: gray;
+}
+
+.blog_info h2 a {
+    color: var(--card-info-color);
+    text-decoration: none;
+}
