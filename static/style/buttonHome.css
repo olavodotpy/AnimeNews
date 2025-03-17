@@ -3,17 +3,12 @@
     --color-button-home: #0e0e0e;
 }
 
-.div_button_home {
+.gray_bar {
     display: flex;
     align-items: center;
-    justify-content: left;
-    top: 0;
-    left: 0;
-    padding: 0;
+    justify-content: space-between;
     border: 0;
-    z-index: 1000;
     height: 50px;
-    width: 100%;
     background-color: gray;
 }
 
@@ -21,8 +16,6 @@
     font-size: xx-large;
     text-align: center;
     cursor: pointer;
-    z-index: 1000;
-    top: 0;
     width: 330px;
     height: 50px;
     background: var(--backg-button-home);
@@ -32,6 +25,6 @@
     transition: .5s;
 }
 
-.div_button_home button:hover {
+.gray_bar button:hover {
     background-color: gray;
 }

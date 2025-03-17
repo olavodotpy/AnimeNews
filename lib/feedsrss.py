@@ -2,6 +2,8 @@ import feedparser
 
 
 RSS_URL = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
+image_fake = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
+
 
 def get_parser(rss_url):
     response = feedparser.parse(rss_url)
