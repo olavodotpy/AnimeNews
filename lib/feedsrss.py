@@ -2,13 +2,12 @@ import feedparser
 
 
 RSS_URL = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
-image_fake = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
+alt_image_url = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
 
 
 def get_parser(rss_url):
     response = feedparser.parse(rss_url)
     return response.entries
-
 
 class Posts:
 
@@ -25,13 +24,17 @@ class Posts:
         data = get_parser(RSS_URL)
 
         for element in data:
-
+            
+            if element.media_thumbnail[0]['url'] == "":
+                element.media_thumbnail[0]['url'] = alt_image_url
+            
             result = {
                 "id": count_id,
                 "title": f'{element.title}',
                 "media": f'{element.media_thumbnail[0]['url']}',
                 "description": f'{element.description}',
                 "content": f'{element.content[0]['value']}',
+                "author": f'{element.author}',
             }
             
             list_post.append(result)

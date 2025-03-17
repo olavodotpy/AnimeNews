@@ -1,6 +1,6 @@
 :root {
-    --backg-button-home: #f7f7f7;
-    --color-button-home: #0e0e0e;
+    --color-backg: #f7f7f7;
+    --color: #0e0e0e;
 }
 
 .gray_bar {
@@ -18,8 +18,8 @@
     cursor: pointer;
     width: 330px;
     height: 50px;
-    background: var(--backg-button-home);
-    color: var(--color-button-home);
+    background: var(--color-backg);
+    color: var(--color);
     border: 0;
     border-color: transparent;
     transition: .5s;

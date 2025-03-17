@@ -1,12 +1,12 @@
 body {
-    font-size: 19px;
-    line-height: 1.7
+    font-size: 21px;
+    line-height: 1.58;
 }
 
 .post_content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 2em;
+    padding: 1.5em;
 }
 
 .post_content img {
@@ -25,7 +25,7 @@ img {
 .post_content h2 {
     margin-top: 1.5em;
     margin-bottom: 0.5em;
-    line-height: 1;
+    line-height: 1.58;
 }
 
 .post_content h1 {
@@ -37,7 +37,8 @@ img {
 }
 
 .post_content p {
-    font-size: 20px;
+    font-size: 21px;
     margin-bottom: 1em;
+    letter-spacing: -.03px;
     /* text-align: justify; */
 }

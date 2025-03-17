@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
 
 :root {
-    --bodybackg: #f7f7f7;
-    --bodycolor: #0e0e0e;
+    --color-backg: #f7f7f7;
+    --color: #0e0e0e;
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Outfit', sans-serif;
+    font-family: 'Outfit', sans-serif !important;
     box-sizing: border-box;
 }
 
 body {
-    background: var(--bodybackg);
-    color: var(--bodycolor);
+    background: var(--color-backg);
+    color: var(--color);
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/static/style/lightMode.css">
     <link rel="stylesheet" href="/static/style/style.css">
     <link rel="stylesheet" href="/static/style/content.css">
+    <link rel="stylesheet" href="/static/style/footer.css">
     <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
 </head>
 <body>
@@ -33,7 +34,18 @@
         <p class="text_color">{{ post.content }}</p>
     </main>
 
-    <footer></footer>
+    <footer>
+        <div class="gray_footer">
+            <div class="authors">
+                <p class="text_color">written by</p>
+                <p class="text_color">{{ post.author }}</p>
+            </div>
+            <div class="src">
+                <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">source code</a>
+            </div>
+        </div>
+    </footer>
+
     <script src="/static/js/lightMode.js"></script>
 </body>
 </html>
