@@ -21,15 +21,23 @@ Exemplo em SSH
 
 ```git clone git@github.com:olavodotpy/AnimeNews.git```
 
-Depois mude a branch para a develop pois a Master é apenas de leitura:
+Crie uma branch develop que rastreie a origin/develop do repositório:
 
-```git checkout develop```
+```git checkout -b develop origin/develope```
 
 Crie um ambiente virtual:
 
 ```python -m venv name_here```
 
-Faça install do arquivo de manifesto:
+Entre/ative seu ambiente com:
+
+```source name_here/bin/activate```
+
+Para sair/desativar execute:
+
+```deactivate```
+
+Faça um install do arquivo de manifesto:
 
 ```pip install -r requirements.txt```
 

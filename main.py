@@ -2,16 +2,17 @@ from lib.feedsrss import Posts
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-import os
-import uvicorn
-from dotenv import load_dotenv
+# import os
+# import uvicorn
+# from dotenv import load_dotenv
 
 
 app = FastAPI()
 feed = Posts()
-templates = Jinja2Templates(directory="templates")
-load_dotenv()
+# load_dotenv()
 
+# config
+templates = Jinja2Templates(directory="templates")
 app.mount(
     "/static",
     StaticFiles(directory="static"),
@@ -52,5 +53,5 @@ async def posts(request: Request, id: int):
         )
 
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT"), log_level="info")
+# if __name__ == "__main__":
+#     uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT"), log_level="info")
