@@ -1,28 +1,26 @@
 import feedparser
 
-
-RSS_URL = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
-alt_image_url = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
-
-def get_parser(rss_url):
-    response = feedparser.parse(rss_url)
-    return response.entries
-
-
 class Posts:
 
     def __init__(self) -> None:
-        pass
+        self.RSS_URL = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
+        self.ALT_IMG_URL = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
+
+
+    def get_parser(self):
+        response = feedparser.parse(self.RSS_URL)
+        return response.entries
 
 
     def get_posts(self) -> list:
         list_post = list()
         count_id: int = 1
-        data = get_parser(RSS_URL)
+        data = self.get_parser()
+        # base_content
 
         for element in data:
             if element.media_thumbnail[0]['url'] == "":
-                element.media_thumbnail[0]['url'] = alt_image_url
+                element.media_thumbnail[0]['url'] = self.ALT_IMG_URL
             
             result = {
                 "id": count_id,
