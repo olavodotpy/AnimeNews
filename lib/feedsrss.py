@@ -1,4 +1,5 @@
 import feedparser
+from .formatter import Formatter
 
 class Posts:
 
@@ -12,21 +13,19 @@ class Posts:
         return response.entries
 
 
-    def get_posts(self) -> list:
+    def set_posts(self) -> list:
         list_post = list()
         count_id: int = 1
         data = self.get_parser()
-        # base_content
 
         for element in data:
             if element.media_thumbnail[0]['url'] == "":
                 element.media_thumbnail[0]['url'] = self.ALT_IMG_URL
-            
+
             result = {
                 "id": count_id,
                 "title": f'{element.title}',
                 "media": f'{element.media_thumbnail[0]['url']}',
-                "description": f'{element.description}',
                 "content": f'{element.content[0]['value']}',
                 "author": f'{element.author}',
             }
@@ -35,6 +34,19 @@ class Posts:
             count_id += 1
         
         return list_post 
+    
+
+    def get_posts(self):
+        result_posts = self.set_posts()
+
+        for post in result_posts:
+            form = Formatter(post['content'])
+            post["initial_content"] = f'{form._filter("RELACIONADO:")}'
+            post["initial_iddle"] = f'{form._filter("Fonte:")}'
+            post["initial_final"] = f'{" ".join(form.word_group)}'
+            del post['content']
+
+        return result_posts
 
 
     def get_post_by_id(self, access_id: int):
