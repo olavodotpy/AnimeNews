@@ -7,14 +7,15 @@ class Formatter:
 
 
     def _filter(self, grille: str):
-        if grille not in self.word_group:
-            return False
-
-        self.cache.clear()
+        if grille in self.word_group:
+            
+            self.cache.clear()
+            
+            while self.word_group[0] != grille:
+                removed_item = self.word_group.pop(0)
+                self.cache.append(removed_item)
+            
+            self.response_content = " ".join(self.cache)
+            return self.response_content
         
-        while self.word_group[0] != grille:
-            removed_item = self.word_group.pop(0)
-            self.cache.append(removed_item)
-        
-        self.response_content = " ".join(self.cache)
         return self.response_content

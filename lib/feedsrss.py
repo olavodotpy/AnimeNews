@@ -42,8 +42,8 @@ class Posts:
         for post in result_posts:
             form = Formatter(post['content'])
             post["initial_content"] = f'{form._filter("RELACIONADO:")}'
-            post["initial_iddle"] = f'{form._filter("Fonte:")}'
-            post["initial_final"] = f'{" ".join(form.word_group)}'
+            post["iddle_content"] = f'{form._filter("Fonte:")}'
+            post["final_content"] = f'{" ".join(form.word_group)}'
             del post['content']
 
         return result_posts
