@@ -3,10 +3,13 @@ src
 __pycache__/
 *.py[cod]
 *$py.class
-test.py
 
 # C extensions
 *.so
+
+# tests
+testhttp.py
+test.py
 
 # Distribution / packaging
 .Python
@@ -171,6 +174,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-
-#develop
-README-develop.md

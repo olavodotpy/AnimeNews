@@ -9,9 +9,10 @@ from dotenv import load_dotenv
 
 app = FastAPI()
 feed = Posts()
-templates = Jinja2Templates(directory="templates")
 load_dotenv()
 
+# config
+templates = Jinja2Templates(directory="templates")
 app.mount(
     "/static",
     StaticFiles(directory="static"),
