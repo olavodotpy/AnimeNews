@@ -1,15 +1,10 @@
 # Byte-compiled / optimized / DLL files
-src
 __pycache__/
 *.py[cod]
 *$py.class
 
 # C extensions
 *.so
-
-# tests
-testhttp.py
-test.py
 
 # Distribution / packaging
 .Python
