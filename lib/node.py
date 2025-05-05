@@ -1,12 +1,5 @@
 from typing import Any
 
-class NodeNotFoundError(Exception):
-    """Exeception for nodes not found."""
-
-    def __init__(self, message='Node not Found in the operation.') -> None:
-        self.message = message
-        super().__init__(self.message)
-
 
 class Node:
     """
@@ -15,6 +8,7 @@ class Node:
     def __init__(self, identify: int, title, media_thumbnail, author, content):
         self.__identify = identify
         self.next = None
+        self.prev = None
         self.title = title
         self.media_thumbnail = media_thumbnail
         self.author = author
