@@ -1,11 +1,11 @@
-from typing import Any
+from .exception import InvalidPostID
 
 
 class Node:
     """
     Posts
     """
-    def __init__(self, identify: int, title, media_thumbnail, author, content):
+    def __init__(self, identify: int, title: str, media_thumbnail: str, author: str, content: str):
         self.__identify = identify
         self.next = None
         self.prev = None
@@ -21,5 +21,5 @@ class Node:
 
 
     @identify.setter
-    def identify(self, new_id: Any):
-        raise Exception('This attribute cannot be changed')
+    def identify(self, new_id: int):
+        raise InvalidPostID

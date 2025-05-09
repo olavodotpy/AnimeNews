@@ -11,7 +11,8 @@ class LinkedPosts:
         self.tail = None
         self.hash_table = dict() 
 
-    def append_post(self, identify: int, title: str, 
+
+    def append_end_group(self, identify: int, title: str, 
                     media_thumbnail: str, author: str, content: str,
         ):
         """"""
@@ -25,21 +26,60 @@ class LinkedPosts:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
+
     
+    def append_start_group(self, identify: int, title: str, 
+                    media_thumbnail: str, author: str, content: str,
+        ):
+        """"""
+        new_node = Node(identify, title, media_thumbnail, author, content)
+
+        if self.head is None:
+            self.head = self.tail = new_node
+            self.hash_table[new_node.identify] = new_node
+            return
+
+        self.hash_table[new_node.identify] = new_node
+        new_node.next = self.head
+        self.head.prev = new_node
+        self.head = new_node
+
     
     def json(self):
         """"""
-        pass
+        json_lists = list()
+        current = self.head
 
+        while current:
 
-    def search_id(self, _id: int):
+            # form_content = Formatter(current.content)
+            # current.content = form_content.content_filters("RELACIONADO:")
+
+            json_structure = {
+                "id": current.identify,
+                "title": current.title,
+                "media": current.media_thumbnail,
+                "author": current.author,
+                "content": current.content,
+            }
+
+            json_lists.append(json_structure)
+            current = current.next
+
+        return json_lists
+        
+
+    def search_id(self, id_requested: int):
         """"""
-        node_pointer = self.hash_table.get(_id)
+        node_pointer = self.hash_table.get(id_requested)
 
-        if self.head is None or _id > 50:
+        if self.head is None:
             raise NodeNotFoundError
+        
+        # form_content = Formatter(node_pointer.content)
+        # node_pointer.content = form_content.content_filters("RELACIONADO:")
 
-        _dict = {
+        json_structure = {
             "id": node_pointer.identify,
             "title": node_pointer.title,
             "media": node_pointer.media_thumbnail,
@@ -47,7 +87,7 @@ class LinkedPosts:
             "content": node_pointer.content,
         }
 
-        return _dict
+        return json_structure
 
 
     def display(self):
