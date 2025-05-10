@@ -35,6 +35,6 @@ Do an install of the manifest file:
 
 run ```main.py``` using fastapi:
 
-```fastapi dev main.py```
+```fastapi dev src/animenews/main.py```
 
 Make a good implementation and send a PR to the develop branch 😊
