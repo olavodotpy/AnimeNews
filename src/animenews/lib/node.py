@@ -1,4 +1,4 @@
-from exception import InvalidPostID
+from .exception import InvalidPostID
 
 
 class Node:
