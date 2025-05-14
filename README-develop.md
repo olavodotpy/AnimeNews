@@ -1,5 +1,5 @@
 ## Documentation
-### For information, read the [```docs```]() folder in the correct order
+### For information, read the [```docs```](https://github.com/olavodotpy/AnimeNews/tree/Master/docs) folder in the correct order
 
 ## Clone, deploy on localhost
 
