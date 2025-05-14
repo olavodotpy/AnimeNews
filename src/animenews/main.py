@@ -14,22 +14,22 @@ load_dotenv()
 
 @app.get("/api/posts")
 async def get_feeds(): 
-    group_of_posts = fetch_posts(LinkedPosts)
-    response = group_of_posts.json()
+    group_posts = fetch_posts(LinkedPosts)
+    response = group_posts.json()
     return response
 
 
 @app.get("api/post/{post_id}")
 async def get_feeds_by_id(post_id: int):
-    group_of_posts = fetch_posts(LinkedPosts)
-    post_by_id = group_of_posts.search_id(post_id)
+    group_posts = fetch_posts(LinkedPosts)
+    post_by_id = group_posts.search_id(post_id)
     return post_by_id
 
 
 @app.get("/")
 async def home(request: Request):
-    group_of_posts = fetch_posts(LinkedPosts)
-    post_cards = group_of_posts.json()
+    group_posts = fetch_posts(LinkedPosts)
+    post_cards = group_posts.json()
 
     return templates.TemplateResponse(
             "index.html", 
@@ -42,14 +42,14 @@ async def home(request: Request):
 
 @app.get("/post/{post_id}")
 async def posts(request: Request, post_id: int):
-    group_of_posts = fetch_posts(LinkedPosts)
-    read_post_select = group_of_posts.search_id(post_id)
- 
+    group_posts = fetch_posts(LinkedPosts)
+    post_select = group_posts.search_id(post_id)
+
     return templates.TemplateResponse(
             "post.html",
             {
                 "request": request,
-                "post": read_post_select,    
+                "post": post_select,    
             }
         )
 

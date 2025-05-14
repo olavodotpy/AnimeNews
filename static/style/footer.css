@@ -3,12 +3,12 @@
     --color: #0e0e0e;
 }
 
-.gray_footer {
+.footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: gray;
-    padding: 0.4em;
+    background: #3C3C40;
+    padding: 1.5rem;
 }
 
 .authors {

@@ -14,7 +14,7 @@
 <body>
 
     <header>
-        <div class="gray_bar" style="overflow: hidden;">
+        <div class="color_bar" style="overflow: hidden;">
             <button onclick="window.location.href='/'" class="button_home">
                 <p class="text_color">Últimas Notícias</p>
             </button>
@@ -31,17 +31,19 @@
         <h1>{{ post.title }}</h1>
         <h2>{{ post.description }}</h2>
         <img src="{{ post.media }}" alt="media">
-        <p class="text_color">{{ post.content }}</p>
+        {% for paragraph in post.content %}
+        <p class="text_color">{{ paragraph|safe }}</p>
+        {% endfor %}
     </main>
 
     <footer>
-        <div class="gray_footer">
+        <div class="footer">
             <div class="authors">
-                <p class="text_color">written by</p>
+                <p class="text_color">Written by</p>
                 <p class="text_color">{{ post.author }}</p>
             </div>
             <div class="src">
-                <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">source code</a>
+                <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">Source code</a>
             </div>
         </div>
     </footer>

@@ -1,7 +1,3 @@
-## Stack
-
-### Using the python framework fastapi + Uvicorn ASGI + jinja2 + Railway + RSS Crunchyroll News
-
 ## Documentation
 ### For information, read the [```docs```]() folder in the correct order
 

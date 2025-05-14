@@ -1,7 +1,7 @@
 from .node import Node
 from .exception import NodeNotFoundError
 
-# from .formatter import Formatter
+from .formatter import split_dot
 
 
 class LinkedPosts:
@@ -52,15 +52,12 @@ class LinkedPosts:
 
         while current:
 
-            # form_content = Formatter(current.content)
-            # current.content = form_content.content_filters("RELACIONADO:")
-
             json_structure = {
                 "id": current.identify,
                 "title": current.title,
                 "media": current.media_thumbnail,
                 "author": current.author,
-                "content": current.content,
+                "content": split_dot(current.content),
             }
 
             json_lists.append(json_structure)
@@ -75,16 +72,14 @@ class LinkedPosts:
 
         if self.head is None:
             raise NodeNotFoundError
-        
-        # form_content = Formatter(node_pointer.content)
-        # node_pointer.content = form_content.content_filters("RELACIONADO:")
+
 
         json_structure = {
             "id": node_pointer.identify,
             "title": node_pointer.title,
             "media": node_pointer.media_thumbnail,
             "author": node_pointer.author,
-            "content": node_pointer.content,
+            "content": split_dot(node_pointer.content),
         }
 
         return json_structure

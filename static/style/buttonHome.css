@@ -3,13 +3,13 @@
     --color: #0e0e0e;
 }
 
-.gray_bar {
+.color_bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: 0;
     height: 50px;
-    background-color: gray;
+    background-color: #3C3C40;
 }
 
 .button_home {
@@ -25,6 +25,6 @@
     transition: .5s;
 }
 
-.gray_bar button:hover {
-    background-color: gray;
+.color_bar button:hover {
+    background-color: #3C3C40;
 }

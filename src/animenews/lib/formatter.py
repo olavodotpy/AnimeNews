@@ -1,22 +1,17 @@
-# class Formatter:
-    
-#     def __init__(self, word_group: str):
-#         self.word_group = word_group.split()
-#         self.cache = []
-#         self.result = ""
+def split_dot(phrase: str):
+    word_group = phrase.split()
+    result = list()
+    dot = list()
+    no_dot = list()
 
+    for word in word_group:
+        dot.append(word)
+        no_dot.append(word)
 
-#     def content_filters(self, grille: str):
-#         if grille in self.word_group:
-            
-#             self.cache.clear()
-            
-#             while self.word_group[0] != grille:
-#                 removed_item = self.word_group.pop(0)
-#                 self.cache.append(removed_item)
-            
-#             self.result = " ".join(self.cache)
-            
-#             return self.result
-        
-#         return " ".join(self.word_group)
+        if "." in word:
+            result.append(" ".join(dot))
+            dot.clear()
+            no_dot.clear()
+
+    result.append(" ".join(no_dot))
+    return result
