@@ -8,8 +8,9 @@
     align-items: center;
     justify-content: space-between;
     border: 0;
-    height: 50px;
+    height: 100%;
     background-color: #3C3C40;
+    padding: 0;
 }
 
 .button_home {
@@ -23,6 +24,7 @@
     border: 0;
     border-color: transparent;
     transition: .5s;
+    padding: 0;
 }
 
 .color_bar button:hover {

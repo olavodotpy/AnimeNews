@@ -8,7 +8,10 @@ def split_dot(phrase: str):
         dot.append(word)
         no_dot.append(word)
 
-        if "." in word:
+        if ("." in word and word_group[word_group.index(word) + 1] != "("
+            and word_group[word_group.index(word) + 1] != ")."
+            and word_group[word_group.index(word) + 1] != ")"
+        ):
             result.append(" ".join(dot))
             dot.clear()
             no_dot.clear()
