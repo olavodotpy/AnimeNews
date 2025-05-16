@@ -1,9 +1,9 @@
-from .lib.linked_posts import LinkedPosts
-from .fetch import fetch_posts
+from .src.animenews.linked_posts import LinkedPosts
+from .src.animenews.fetch import fetch_posts
 
 from fastapi import Request
 
-from ...config import app, Request, templates
+from .config import app, Request, templates
 
 import os
 import uvicorn

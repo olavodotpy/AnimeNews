@@ -1,5 +1,5 @@
 import feedparser
-from .lib.linked_posts import LinkedPosts
+from .linked_posts import LinkedPosts
 from ...config import url_crunchyroll, default_image
 
 

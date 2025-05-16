@@ -1,1 +1,1 @@
-web: cd src && python -m animenews.main
+web: python main.py
