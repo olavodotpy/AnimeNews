@@ -1,5 +1,5 @@
-from src.animenews.linked_posts import LinkedPosts
-from src.animenews.fetch import fetch_posts
+from src.animenews.lib.linked_posts import LinkedPosts
+from src.animenews.lib.fetch import fetch_posts
 
 from fastapi import Request
 
