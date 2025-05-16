@@ -16,4 +16,5 @@ body {
     background: var(--color-backg);
     color: var(--color);
     transition: .5s;
+    overflow-x: hidden;
 }
