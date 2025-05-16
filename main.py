@@ -1,54 +1,55 @@
-from lib.feedsrss import Posts
-from fastapi import FastAPI, Request
-from fastapi.staticfiles import StaticFiles
-from fastapi.templating import Jinja2Templates
+from src.animenews.lib.linked_posts import LinkedPosts
+from src.animenews.lib.fetch import fetch_posts
+
+from fastapi import Request
+
+from config import app, Request, templates
+
 import os
 import uvicorn
 from dotenv import load_dotenv
 
 
-app = FastAPI()
-feed = Posts()
 load_dotenv()
 
-# config
-templates = Jinja2Templates(directory="templates")
-app.mount(
-    "/static",
-    StaticFiles(directory="static"),
-    name="static",
-)
-
 @app.get("/api/posts")
-async def get_feeds():
-    return feed.get_posts()
+async def get_feeds(): 
+    group_posts = fetch_posts(LinkedPosts)
+    response = group_posts.json()
+    return response
 
 
 @app.get("api/post/{post_id}")
 async def get_feeds_by_id(post_id: int):
-    post = feed.get_post_by_id(post_id)
-    return post
+    group_posts = fetch_posts(LinkedPosts)
+    post_by_id = group_posts.search_id(post_id)
+    return post_by_id
 
 
 @app.get("/")
 async def home(request: Request):
+    group_posts = fetch_posts(LinkedPosts)
+    post_cards = group_posts.json()
+
     return templates.TemplateResponse(
             "index.html", 
             {
                 "request": request,
-                "posts": feed.get_posts(),
+                "posts": post_cards,
             }
         )
 
 
-@app.get("/post/{id}")
-async def posts(request: Request, id: int):
-    post = feed.get_post_by_id(id)
+@app.get("/post/{post_id}")
+async def posts(request: Request, post_id: int):
+    group_posts = fetch_posts(LinkedPosts)
+    post_select = group_posts.search_id(post_id)
+
     return templates.TemplateResponse(
             "post.html",
             {
                 "request": request,
-                "post": post,    
+                "post": post_select,    
             }
         )
 

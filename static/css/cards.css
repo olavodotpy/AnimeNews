@@ -10,9 +10,19 @@ button:focus, input:focus, textarea:focus {
     outline: 0;
 }
 
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    justify-content: space-evenly;
+    overflow-x: hidden;
+    min-height: 100vh;
+
+}
+
 .blog_wrap {
-    width: 390px;
-    margin: 80px auto;
+    width: 380px;
+    margin: 10px auto;
 }
 
 .blog_item {
