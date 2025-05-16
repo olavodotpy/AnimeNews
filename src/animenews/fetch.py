@@ -1,6 +1,6 @@
 import feedparser
 from .linked_posts import LinkedPosts
-from ...config import url_crunchyroll, default_image
+from config import url_crunchyroll, default_image
 
 
 def entries() -> list:
