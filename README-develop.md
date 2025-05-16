@@ -11,15 +11,15 @@ Example in SSH
 
 Create a develop branch that tracks the origin/develop of the repository:
 
-```git checkout -b develop origin/develope```
+```git checkout -b develop origin/develop```
 
 Create a virtual environment:
 
-```python -m venv name_here```
+```python -m venv venv```
 
 Enter/activate your environment with:
 
-```source name_here/bin/activate```
+```source venv/bin/activate```
 
 To exit/deactivate, run:
 
