@@ -17,4 +17,5 @@ body {
     color: var(--color);
     transition: .5s;
     overflow-x: hidden;
+    min-height: 100vh;
 }
