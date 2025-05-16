@@ -1,7 +1,7 @@
 from .node import Node
 from .exception import NodeNotFoundError
 
-from utils.formatter import split_dot
+from ..utils.formatter import split_dot
 
 
 class LinkedPosts:
