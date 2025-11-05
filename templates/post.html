@@ -31,9 +31,13 @@
         <h1>{{ post.title }}</h1>
         <h2>{{ post.description }}</h2>
         <img src="{{ post.media }}" alt="media">
-        {% for paragraph in post.content %}
-        <p class="text_color">{{ paragraph|safe }}</p>
-        {% endfor %}
+        {% if post.content is string() %}
+            <p class="text_color"> {{ post.content|safe }} </p>
+        {% else %}
+            {% for paragraph in post.content %}
+                <p class="text_color">{{ paragraph|safe }}</p>
+            {% endfor %}
+        {%endif%}
     </main>
 
     <footer>
