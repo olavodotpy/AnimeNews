@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }}</title>
-    <link rel="stylesheet" href="/static/css/buttonHome.css">
-    <link rel="stylesheet" href="/static/css/lightMode.css">
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/content.css">
     <link rel="stylesheet" href="/static/css/footer.css">
@@ -14,37 +12,47 @@
 <body>
 
     <header>
-        <div class="color_bar" style="overflow: hidden;">
-            <button onclick="window.location.href='/'" class="button_home">
-                <p class="text_color">Anime News</p>
-            </button>
-
-            <div class="div_lightmode">
-                <button id="lightmode" class="button_lightmode">
-                    <img src="/static/image/light-mode.png" alt="lightmode">
-                </button>
+            <div class="header-nav">
+                <div class="nav-logo">
+                    <button onclick="window.location.href='/'">
+                        <img src="/static/image/crunchyLogoRSS.png" alt=""> 
+                    </button>
+                </div>
+                <div class="nav-button">
+                    <div class="login">
+                        <button window.location.href='#'>Login</button>
+                    </div>
+                    <div class="lightmode">
+                        <button id="lightmode">
+                            <img src="/static/image/brightness_dark.png" id="imgMode" alt="lightmode">
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
     </header>
 
     <main class="post_content">
         <h1>{{ post.title }}</h1>
         <h2>{{ post.description }}</h2>
         <img src="{{ post.media }}" alt="media">
-        {% for paragraph in post.content %}
-        <p class="text_color">{{ paragraph|safe }}</p>
-        {% endfor %}
+        {% if post.content is string() %}
+            <p class="text_color"> {{ post.content|safe }} </p>
+        {% else %}
+            {% for paragraph in post.content %}
+                <p class="text_color">{{ paragraph|safe }}</p>
+            {% endfor %}
+        {%endif%}
     </main>
 
     <footer>
-        <div class="footer">
-            <div class="authors">
-                <p class="text_color">Written by</p>
-                <p class="text_color">{{ post.author }}</p>
-            </div>
-            <div class="src">
-                <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">Source code</a>
-            </div>
+        <div class="authors">
+            <p class="text_color">Written by {{ post.author }}</p>
+        </div>
+        <div class="creator">
+            <p class="text_color">created by olavodotpy</p>
+        </div>
+        <div class="src">
+            <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">Source code/credits</a>
         </div>
     </footer>
 

@@ -3,26 +3,26 @@
     --color: #0e0e0e;
 }
 
-.footer {
+footer {
+    overflow: hidden;
+    padding: 40px 0;
+    position: absolute;
+    width: 100%;
+    margin: 0;
+}
+
+footer .authors p, .src a, .creator p {
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 1px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #3C3C40;
-    padding: 1.5rem;
+    color: var(--color);
+    text-align: center;
+    justify-content: center;
+    padding: 1px 0;
+    font-weight: 300;
+    font-size: 0.85em;
 }
 
-.authors {
-    padding: 20px;
-}
-
-.src {
-    padding: 20px;
-}
-
-.src a {
-    color: var(--color)
-}
-
-.src a:hover {
-    color: var(--color-backg);
+footer .src a:hover {
+    color: #fe6a00;
 }
