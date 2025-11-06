@@ -25,8 +25,8 @@ def refresh_cache(t: int=300):
     global linked_posts
     while True:
         sleep(t)
-        linked_posts = None
         print("\tCache refreshed!")
+        linked_posts = None
 
 def entries() -> list:
     try:
@@ -98,6 +98,8 @@ async def posts(request: Request, post_id: int):
         )
 
 Thread(target=refresh_cache, daemon=True).start()
+
+#production:
 
 # if __name__ == "__main__":
 #     uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT"), log_level="info")

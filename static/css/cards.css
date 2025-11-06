@@ -1,28 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap'); */
 
 :root {
     --card-backg:  #ffffff;
     --card-info-color: #0e0e0e;
-
 }
 
 button:focus, input:focus, textarea:focus {
     outline: 0;
 }
 
+/* 
 nav {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    justify-content: space-evenly;
-    overflow-x: hidden;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
     min-height: 100vh;
-
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .blog_wrap {
     width: 380px;
-    margin: 10px auto;
+    margin: 0;
+} */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.blog_wrap {
+    width: 380px;
+    margin: 0;
+}
+.blog_wrap:nth-child(1),
+.blog_wrap:nth-child(3) {
+    flex: 0 0 60%;
+}
+
+.blog_wrap:nth-child(2),
+.blog_wrap:nth-child(4) {
+    flex: 0 0 30%;
+}
+.blog_wrap:nth-child(n+5) {
+    flex: 0 0 45%;
 }
 
 .blog_item {
@@ -70,4 +99,40 @@ nav {
 .blog_info h2 a {
     color: var(--card-info-color);
     text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+    nav {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .blog_wrap {
+        flex: 0 0 calc(50% - 10px) !important;
+        width: auto;
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 10px;
+        gap: 15px;
+    }
+
+    .blog_wrap {
+        flex: 0 0 100% !important;
+        width: auto;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .blog_info {
+        padding: 0 20px 20px 20px;
+    }
+
+    .blog_info h2 {
+        font-size: 20px;
+        line-height: 26px;
+    }
 }

@@ -13,7 +13,7 @@ Create a develop branch that tracks the origin/develop of the repository:
 
 ```git checkout -b develop origin/develop```
 
-Create a virtual environment:
+Install Python 3.13.0 (check .tool-versions for asdf) and create the virtual environment:
 
 ```python -m venv venv```
 
@@ -31,6 +31,6 @@ Do an install of the manifest file:
 
 run ```main.py``` using fastapi:
 
-```fastapi dev src/animenews/main.py```
+```fastapi dev main.py```
 
 Make a good implementation and send a PR to the develop branch 😊
