@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
-
 :root {
     --color-backg: #f7f7f7;
     --color: #0e0e0e;
 }
 
-html, body{
+html, body {
     font-family: sans-serif;
     margin: 0;
     padding: 0;
@@ -16,7 +14,7 @@ html, body{
     color: var(--color);
 }
 
-*head{
+*head {
     .orbitron-uniquifier{
         font-family: "Orbitron", sans-serif;
         font-optical-sizing: auto;
@@ -31,55 +29,47 @@ html, body{
     justify-content: space-between;
     border: 0;
     height: 100%;
-    padding: 0;
+    padding: 0.5rem;
 }
 
-.header-nav .nav-logo button img{
-    width: 340px;
+.header-nav .nav-logo a img {
+    width: 400px;
     display: inline;
     z-index: 1;
     float: left;
 }
 
-.header-nav .nav-logo button {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    background: var(--color-backg);
-    cursor: pointer;
-}
-
-.header-nav .nav-button{
+.header-nav .nav-button {
     float: right;
     display: flex;
     justify-content: flex-end;
     z-index: 5;
 }        
 
-.header-nav .nav-logo button img{
-    width: 320px;
-    display: inline;
-    z-index: 1;
-    float: left;
-}
-
-.login button{
-    padding: 1rem;
-    letter-spacing: 1px;
-    cursor: pointer;
+.nav-button .lightmode button, .nav-button .login a button {
     border: 0;
-    background: var(--color-backg);
-    font-size: 14px;
-    font: inherit;
-    color: var(--color);
-}
-
-.lightmode button{
-    border: 0;
-    padding: 1rem;
+    padding: 1.5rem;
     letter-spacing: 1px;
     cursor: pointer;
     background: var(--color-backg);
+}
+
+.nav-button .login a button {
+    background: #4169E1;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: large;
+    width: 135px;
+    height: 65px;
+    border-radius: 100px;
+    font-weight: bold;
+    transition: .3s;
+} 
+
+.nav-button .login a button:hover {
+    cursor: pointer;
+    background-color: #ff6a01;
 }
 
 /* clearfix */
@@ -93,17 +83,30 @@ html, body{
 }
 
 @media (max-width: 768px) {
-    .header-nav .nav-logo button img{
-        width: 180px;
+    .header-nav .nav-logo a img{
+        width: 100px;
         display: inline;
         z-index: 1;
         float: left;
     }
+
+    .nav-button .login a button {
+        background: #4169E1;
+        color: white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: large;
+        width: 100px;
+        height: 60px;
+        border-radius: 100px;
+        font-weight: bold;
+        transition: .3s;
+    } 
 }
 
 @media screen and (max-width: 1024px) {
-    .header-nav .nav-logo button img{
-        width: 250px;
+    .header-nav .nav-logo a img{
+        width: 200px;
         display: inline;
         z-index: 1;
         float: left;

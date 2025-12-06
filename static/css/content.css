@@ -1,12 +1,29 @@
-body {
+html, body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
     font-size: 21px;
     line-height: 1.58;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background: var(--color-backg);
+    color: var(--color);
+}
+
+*head {
+    .orbitron-uniquifier{
+        font-family: "Orbitron", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: weight;
+        font-style: normal;
+    }
 }
 
 .post_content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 1.5em;
+    padding: 1.3rem;
 }
 
 .post_content img {

@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Crunchyroll RSS</title>
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="stylesheet" href="/static/css/cards.css">
-        <link rel="stylesheet" href="/static/css/footer.css">
-        <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Crunchyroll RSS</title>
+    <link rel="stylesheet" href="/static/css/nav.css">
+    <link rel="stylesheet" href="/static/css/cards.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
+</head>
 
-    <body>
-        <header>
-            <div class="header-nav">
-                <div class="nav-logo">
-                    <button onclick="window.location.href='/'">
-                        <img src="/static/image/crunchyLogoRSS.png" alt=""> 
+<body>
+    <header>
+        <div class="header-nav">
+            <div class="nav-logo">
+                <a href="/">
+                    <img src="/static/image/crunchyLogoRSS.png" alt=""> 
+                </a>
+            </div>
+            <div class="nav-button">
+                <div class="login">
+                    <a href="#">
+                        <button>Login</button>
+                    </a>
+                </div>
+                <div class="lightmode">
+                    <button id="lightmode">
+                        <img src="/static/image/brightness_dark.png" id="imgMode" alt="lightmode">
                     </button>
                 </div>
-                <div class="nav-button">
-                    <div class="login">
-                        <button window.location.href='#'>Login</button>
-                    </div>
-                    <div class="lightmode">
-                        <button id="lightmode">
-                            <img src="/static/image/brightness_dark.png" id="imgMode" alt="lightmode">
-                        </button>
-                    </div>
-                </div>
             </div>
+        </div>
     </header>
 
     <nav>
@@ -56,7 +58,7 @@
         </div>
     </footer>
 
-    </body>
+</body>
 
     <script src="/static/js/lightMode.js"></script>
 </html>
