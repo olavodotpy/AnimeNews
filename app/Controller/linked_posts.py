@@ -1,7 +1,8 @@
 from .node import Node
-from .exception import NodeNotFoundError
+from ..Exceptions.NodeNotFoundError import NodeNotFoundError
+from ..Exceptions.InvalidPostID import InvalidPostID
 
-from .formatter import formatter_text
+from ..Utils.formatter import formatter_text
 
 class LinkedPosts:
 
@@ -15,7 +16,7 @@ class LinkedPosts:
         ):
 
         if identify in self.hash_table:
-            raise ValueError(f"ID {identify} already exists.")
+            raise NodeNotFoundError
 
         new_node = Node(identify, title, media_thumbnail, author, content)
 
@@ -33,7 +34,7 @@ class LinkedPosts:
         ):
 
         if identify in self.hash_table:
-            raise ValueError(f"ID {identify} already exists.")
+            raise InvalidPostID
 
         new_node = Node(identify, title, media_thumbnail, author, content)
 

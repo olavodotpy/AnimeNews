@@ -1,9 +1,9 @@
-from .src.animenews.lib.linked_posts import LinkedPosts
+from .Controller.linked_posts import LinkedPosts
 
 from fastapi import Request, HTTPException
 import feedparser
 
-from .config import app, Request, templates, default_img, crunchyroll_api
+from ..config import app, Request, templates, default_img, crunchyroll_api
 
 import os
 import uvicorn
@@ -15,18 +15,18 @@ load_dotenv()
 
 linked_posts = None
 
-def get_cached_posts():
-    global linked_posts
-    if linked_posts is None:
-        linked_posts = fetch_posts(LinkedPosts)
-    return linked_posts
+# def get_cached_posts():
+#     global linked_posts
+#     if linked_posts is None:
+#         linked_posts = fetch_posts(LinkedPosts)
+#     return linked_posts
 
-def refresh_cache(t: int=300):
-    global linked_posts
-    while True:
-        sleep(t)
-        print("\tCache refreshed!")
-        linked_posts = None
+# def refresh_cache(t: int=300):
+#     global linked_posts
+#     while True:
+#         sleep(t)
+#         print("\tCache refreshed!")
+#         linked_posts = None
 
 def entries() -> list:
     try:
@@ -58,21 +58,21 @@ def fetch_posts(structure: LinkedPosts) -> LinkedPosts:
     return linked_posts
 
 @app.get("/api/posts")
-async def get_feeds(): 
+def get_feeds(): 
     posts = get_cached_posts()
     response = posts.json_node_list()
 
     return response
 
 @app.get("api/post/{post_id}")
-async def get_feeds_by_id(post_id: int):
+def get_feeds_by_id(post_id: int):
     post = get_cached_posts()
     response_post_by_id = post.search_id(post_id)
 
     return response_post_by_id
 
 @app.get("/")
-async def home(request: Request):
+def home(request: Request):
     posts = get_cached_posts()
     response = posts.json_node_list()
 
@@ -85,7 +85,7 @@ async def home(request: Request):
         )
 
 @app.get("/post/{post_id}")
-async def posts(request: Request, post_id: int):
+def posts(request: Request, post_id: int):
     post = get_cached_posts()
     response = post.search_id(post_id)
 
@@ -97,7 +97,9 @@ async def posts(request: Request, post_id: int):
             }
         )
 
-Thread(target=refresh_cache, daemon=True).start()
+# Thread do cache 
+
+# Thread(target=refresh_cache, daemon=True).start()
 
 #production:
 

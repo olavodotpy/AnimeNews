@@ -1,4 +1,4 @@
-from .exception import InvalidPostID
+from ..Exceptions.InvalidPostID import InvalidPostID
 
 class Node:
     """

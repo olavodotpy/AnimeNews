@@ -5,11 +5,11 @@
 
 html, body {
     font-family: sans-serif;
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
     overflow-x: hidden;
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
     background: var(--color-backg);
     color: var(--color);
 }
@@ -33,10 +33,10 @@ html, body {
 }
 
 .header-nav .nav-logo a img {
-    width: 400px;
     display: inline;
     z-index: 1;
     float: left;
+    width: 400px;
 }
 
 .header-nav .nav-button {
@@ -84,10 +84,10 @@ html, body {
 
 @media (max-width: 768px) {
     .header-nav .nav-logo a img{
-        width: 100px;
         display: inline;
         z-index: 1;
         float: left;
+        width: 100px;
     }
 
     .nav-button .login a button {
@@ -106,9 +106,9 @@ html, body {
 
 @media screen and (max-width: 1024px) {
     .header-nav .nav-logo a img{
-        width: 200px;
         display: inline;
         z-index: 1;
         float: left;
+        width: 200px;
     }
 }
