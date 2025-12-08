@@ -4,6 +4,7 @@ class Node:
     """
     Posts
     """
+    
     def __init__(self, identify: int, title: str, media_thumbnail: str | None, author: str, content: str):
         self.next = None
         self.prev = None
@@ -13,9 +14,11 @@ class Node:
         self.author = author
         self.content = content
 
+
     @property
     def identify(self):
         return self.__identify
+
 
     @identify.setter
     def identify(self, new_id: int):

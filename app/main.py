@@ -1,105 +1,25 @@
-from .Controller.linked_posts import LinkedPosts
+from fastapi import FastAPI 
+from fastapi.staticfiles import StaticFiles
+from .Routers import api, web
 
-from fastapi import Request, HTTPException
-import feedparser
+# import os
+# import uvicorn
+# from dotenv import load_dotenv
 
-from ..config import app, Request, templates, default_img, crunchyroll_api
+# load_dotenv()
+app = FastAPI()
 
-import os
-import uvicorn
-from dotenv import load_dotenv
-from threading import Thread
-from time import sleep 
+app.include_router(api.router)
+app.include_router(web.router)
 
-load_dotenv()
 
-linked_posts = None
+STATIC_URL = 'static'
 
-# def get_cached_posts():
-#     global linked_posts
-#     if linked_posts is None:
-#         linked_posts = fetch_posts(LinkedPosts)
-#     return linked_posts
-
-# def refresh_cache(t: int=300):
-#     global linked_posts
-#     while True:
-#         sleep(t)
-#         print("\tCache refreshed!")
-#         linked_posts = None
-
-def entries() -> list:
-    try:
-        response = feedparser.parse(crunchyroll_api)
-    except Exception as e:
-        print(f"\t[ERROR]: {e}")
-        raise HTTPException(status_code=500, detail="Failed to fetch crunchyroll RSS")
-
-    return response.entries
-
-def fetch_posts(structure: LinkedPosts) -> LinkedPosts:
-    linked_posts: LinkedPosts = structure()
-
-    response = entries()
-
-    post_id: int = 1
-
-    for element in response:
-        if element.media_thumbnail[0]['url'] == "":
-            element.media_thumbnail[0]['url'] = default_img
-
-        linked_posts.append(
-            post_id, element.title, element.media_thumbnail[0]['url'],
-            element.author, element.content[0]['value']
-        )
-
-        post_id += 1
-
-    return linked_posts
-
-@app.get("/api/posts")
-def get_feeds(): 
-    posts = get_cached_posts()
-    response = posts.json_node_list()
-
-    return response
-
-@app.get("api/post/{post_id}")
-def get_feeds_by_id(post_id: int):
-    post = get_cached_posts()
-    response_post_by_id = post.search_id(post_id)
-
-    return response_post_by_id
-
-@app.get("/")
-def home(request: Request):
-    posts = get_cached_posts()
-    response = posts.json_node_list()
-
-    return templates.TemplateResponse(
-            "index.html", 
-            {
-                "request": request,
-                "posts": response,
-            }
-        )
-
-@app.get("/post/{post_id}")
-def posts(request: Request, post_id: int):
-    post = get_cached_posts()
-    response = post.search_id(post_id)
-
-    return templates.TemplateResponse(
-            "post.html",
-            {
-                "request": request,
-                "post": response,    
-            }
-        )
-
-# Thread do cache 
-
-# Thread(target=refresh_cache, daemon=True).start()
+app.mount(
+    "/static",
+    StaticFiles(directory=STATIC_URL),
+    name="static",
+)
 
 #production:
 

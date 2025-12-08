@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }}</title>
-    <link rel="stylesheet" href="/static/layouts/nav.css">
-    <link rel="stylesheet" href="/static/layouts/content.css">
-    <link rel="stylesheet" href="/static/layouts/footer.css">
-    <link rel="shortcut icon" href="/static/assets/images/favicon.ico" type="image/x-icon">
+    <link href="{{ url_for('static', path='/layouts/content.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" >
 </head>
 
 <body>
@@ -15,13 +16,13 @@
         <div class="header-nav">
             <div class="nav-logo">
                 <a href="/">
-                    <img src="/static/assets/images/crunchyLogoRSS.png" alt=""> 
+                    <img src="{{ url_for('static', path='/assets/images/crunchyLogoRSS.png') }}" alt=logo_crunchurollRSS"> 
                 </a>
             </div>
             <div class="nav-button">
                 <div class="lightmode">
                     <button id="lightmode">
-                        <img src="/static/assets/images/brightness_dark.png" id="imgMode" alt="lightmode">
+                        <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
                     </button>
                 </div>
             </div>
@@ -53,6 +54,6 @@
         </div>
     </footer>
 
-    <script src="/static/scripts/lightMode.js"></script>
+    <script src="{{url_for('static', path='/scripts/lightMode.js') }}"></script>
 </body>
 </html>
