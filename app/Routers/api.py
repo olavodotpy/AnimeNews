@@ -1,18 +1,17 @@
 from fastapi import APIRouter
-from ..Models.services import FetchService
+from ..Models.core import Fetch
 from ..Models.linked_posts import LinkedPosts
 
 router = APIRouter()
-fetch = FetchService()
+fetch = Fetch()
+
 
 @router.get("/api/posts")
-async def get_feeds(): 
-    fetch.add_posts(LinkedPosts)
-    
-    return fetch.list_posts.json()
+async def get_feeds():
+    fetch.connect(LinkedPosts) 
+    return fetch.posts.json()
 
 @router.get("api/post/{post_id}")
 async def get_feeds_by_id(post_id: int):
-    fetch.add_posts(LinkedPosts)
     
-    return fetch.list_posts.search(post_id)
+    return fetch.posts.search(post_id)

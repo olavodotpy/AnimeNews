@@ -12,8 +12,8 @@ class LinkedPosts:
         self.hash_table = dict() 
 
 
-    def append(self, identify: int, title: str, 
-                    media_thumbnail: str | None, author: str, content: str,
+    def append(self, identify: int, title: str, media_thumbnail: str | None,
+            author: str, content: str,
         ):
         if identify in self.hash_table:
             raise NodeNotFoundError('posts with the same ID')
@@ -30,8 +30,8 @@ class LinkedPosts:
             self.tail = new_node
 
 
-    def prepend(self, identify: int, title: str, 
-                    media_thumbnail: str, author: str, content: str,
+    def prepend(self, identify: int, title: str, media_thumbnail: str | None,
+                author: str, content: str,
         ):
         if identify in self.hash_table:
             raise InvalidPostID
@@ -55,7 +55,7 @@ class LinkedPosts:
         current = self.head if node is None else node
 
         while current:
-            json_structure = {
+            post_structure = {
                 "id": current.identify,
                 "title": current.title,
                 "media": current.media_thumbnail,
@@ -63,7 +63,7 @@ class LinkedPosts:
                 "content": formatter_text(current.content),
             }
 
-            json_list.append(json_structure)
+            json_list.append(post_structure)
             current = current.next
 
         return json_list

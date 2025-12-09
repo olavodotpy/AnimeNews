@@ -1,15 +1,17 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, BackgroundTasks
 from fastapi.templating import Jinja2Templates
-from ..Models.services import FetchService
+from ..Models.core import Fetch
 from ..Models.linked_posts import LinkedPosts
 
 templates = Jinja2Templates(directory="templates")
-fetch = FetchService()
+
+fetch = Fetch()
+fetch.connect(LinkedPosts)
 router = APIRouter()
 
 @router.get("/")
-async def home(request: Request):
-    fetch.add_posts(LinkedPosts)
+async def home(request: Request, background_tasks: BackgroundTasks):
+    background_tasks.add_task(fetch.update, LinkedPosts)
     response = fetch.posts.json()
 
     return templates.TemplateResponse(
@@ -22,7 +24,6 @@ async def home(request: Request):
 
 @router.get("/post/{post_id}")
 async def posts(request: Request, post_id: int):
-    fetch.add_posts(LinkedPosts)
     response = fetch.posts.search(post_id)
 
     return templates.TemplateResponse(

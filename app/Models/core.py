@@ -1,15 +1,17 @@
 from fastapi import HTTPException
 from .linked_posts import LinkedPosts
+from ..Exceptions.CacheFailedError import CacheFailedError
+from time import sleep
 
 import feedparser
 
-
-class FetchService:
+class Fetch:
 
     def __init__(self) -> None:
         self.crunchyroll_api: str = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
         self.default_img: str = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
-        self.posts: LinkedPosts = None
+        self.posts: LinkedPosts | None  = None
+        self.cache_status = False 
 
 
     def entries(self) -> list:
@@ -22,21 +24,34 @@ class FetchService:
         return response.entries
 
 
-    def add_posts(self, structure: LinkedPosts):
+    def connect(self, structure: LinkedPosts):
         linked_posts = structure()
         response = self.entries()
 
         post_id: int = 1
 
-        for element in response:
-            if element.media_thumbnail[0]['url'] == "":
-                element.media_thumbnail[0]['url'] = self.default_img
+        for e in response:
+            if e.media_thumbnail[0]['url'] == "":
+                e.media_thumbnail[0]['url'] = self.default_img
 
             linked_posts.append(
-                post_id, element.title, element.media_thumbnail[0]['url'],
-                element.author, element.content[0]['value']
+                post_id, e.title, e.media_thumbnail[0]['url'],
+                e.author, e.content[0]['value']
             )
 
             post_id += 1
 
         self.posts = linked_posts
+
+
+    def update(self, structure: LinkedPosts, timer: int=900):
+        if self.cache_status:
+            return
+
+        while True:
+            self.cache_status = True
+            sleep(timer)
+            try:
+                self.connect(structure)
+            except:
+                raise CacheFailedError
