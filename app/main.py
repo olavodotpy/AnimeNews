@@ -1,6 +1,7 @@
 from fastapi import FastAPI 
 from fastapi.staticfiles import StaticFiles
 from .Routers import api, web
+from .Models.core import Fetch
 
 # import os
 # import uvicorn
@@ -8,6 +9,7 @@ from .Routers import api, web
 
 # load_dotenv()
 app = FastAPI()
+fetch = Fetch()
 
 app.include_router(api.router)
 app.include_router(web.router)

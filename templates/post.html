@@ -8,6 +8,7 @@
     <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/index.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" >
 </head>
 
@@ -21,7 +22,7 @@
             </div>
             <div class="nav-button">
                 <div class="lightmode">
-                    <button id="lightmode">
+                    <button id="lightmode" aria-label="Alternar modo claro/escuro">
                         <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
                     </button>
                 </div>
@@ -32,7 +33,7 @@
     <main class="post_content">
         <h1>{{ post.title }}</h1>
         <img src="{{ post.media }}" alt="media">
-        {% if post.content is string() %}
+        {% if post.content is string %}
             <p class="text_color"> {{ post.content|safe }} </p>
         {% else %}
             {% for paragraph in post.content %}
