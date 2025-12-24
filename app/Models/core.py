@@ -5,13 +5,15 @@ from time import sleep
 
 import feedparser
 
+
+# target=crawl, args=(link,)
+
 class Fetch:
 
     def __init__(self) -> None:
         self.crunchyroll_api: str = "https://cr-news-api-service.prd.crunchyrollsvc.com/v1/pt-BR/rss"
         self.default_img: str = "https://woorkup.com/wp-content/uploads/2014/08/wordpress-rss-feed-with-images.png"
         self.posts: LinkedPosts | None  = None
-        self.cache_status = False 
 
 
     def entries(self) -> list:
@@ -45,11 +47,7 @@ class Fetch:
 
 
     def update(self, structure: LinkedPosts, timer: int=900):
-        if self.cache_status:
-            return
-
         while True:
-            self.cache_status = True
             sleep(timer)
             try:
                 self.connect(structure)

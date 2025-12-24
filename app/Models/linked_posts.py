@@ -72,10 +72,8 @@ class LinkedPosts:
     def search(self, id_requested: int) -> dict:
         if id_requested not in self.hash_table:
             raise NodeNotFoundError
-        
-        node_pointer = self.hash_table.get(id_requested)
 
-        response = self.json(node_pointer)[0]
+        response = self.json(self.hash_table[id_requested])[0]
 
         return response
 
