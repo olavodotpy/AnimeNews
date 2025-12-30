@@ -1,26 +1,21 @@
-:root {
-    --color-backg: #f7f7f7;
-    --color: #0e0e0e;
-}
-
 footer {
+    position: absolute;
     overflow: hidden;
     padding: 40px 0;
-    position: absolute;
     width: 100%;
     margin: 0;
 }
 
 footer .authors p, .src a, .creator p {
-    font-family: "Orbitron", sans-serif;
-    letter-spacing: 1px;
     display: flex;
-    color: var(--color);
     text-align: center;
     justify-content: center;
+    font-family: "Orbitron", sans-serif;
+    letter-spacing: 1px;
     padding: 1px 0;
     font-weight: 300;
     font-size: 0.85em;
+    color: var(--color);
 }
 
 footer .src a:hover {

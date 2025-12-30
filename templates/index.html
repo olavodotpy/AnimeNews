@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <title>Crunchyroll RSS</title>
-        <link rel="stylesheet" href="/static/css/style.css">
-        <link rel="stylesheet" href="/static/css/cards.css">
-        <link rel="stylesheet" href="/static/css/footer.css">
-        <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Crunchyroll RSS</title>
+    <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" >
+</head>
 
-    <body>
-        <header>
-            <div class="header-nav">
-                <div class="nav-logo">
-                    <button onclick="window.location.href='/'">
-                        <img src="/static/image/crunchyLogoRSS.png" alt=""> 
+<body>
+    <header>
+        <div class="header-nav">
+            <div class="nav-logo">
+                <a href="/">
+                    <img src="{{ url_for('static', path='/assets/images/crunchyLogoRSS.png') }}" alt=logo_crunchurollRSS"> 
+                </a>
+            </div>
+            <div class="nav-button">
+                <div class="login">
+                    <a href="#">
+                        <button>Login</button>
+                    </a>
+                </div>
+                <div class="lightmode" aria-label="Alternar modo claro/escuro">
+                    <button id="lightmode">
+                        <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
                     </button>
                 </div>
-                <div class="nav-button">
-                    <div class="login">
-                        <button window.location.href='#'>Login</button>
-                    </div>
-                    <div class="lightmode">
-                        <button id="lightmode">
-                            <img src="/static/image/brightness_dark.png" id="imgMode" alt="lightmode">
-                        </button>
-                    </div>
-                </div>
             </div>
+        </div>
     </header>
 
     <nav>
@@ -36,11 +39,10 @@
         <div class="blog_wrap">
             <div class="blog_item">
                 <a href="/post/{{ post.id }}" class="thumb">
-                    <img src="{{ post.media }}" alt="media">
+                    <img loading="lazy" src="{{ post.media }}" alt="media">
                 </a>
                 <div class="blog_info">
                     <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
-                    <h3>{{ post.description }}</h3>
                 </div>
             </div>
         </div>
@@ -52,11 +54,11 @@
             <p class="text_color">created by olavodotpy</p>
         </div>
         <div class="src">
-            <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">Source code/credits</a>
+            <a href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>
         </div>
     </footer>
 
-    </body>
+</body>
 
-    <script src="/static/js/lightMode.js"></script>
+    <script src="{{url_for('static', path='/scripts/lightMode.js') }}"></script>
 </html>

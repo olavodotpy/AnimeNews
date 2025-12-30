@@ -1,4 +1,4 @@
-body {
+html, body {
     font-size: 21px;
     line-height: 1.58;
 }
@@ -6,7 +6,7 @@ body {
 .post_content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 1.5em;
+    padding: 1.3rem;
 }
 
 .post_content img {

@@ -4,38 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ post.title }}</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link rel="stylesheet" href="/static/css/content.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link rel="shortcut icon" href="/static/image/favicon.ico" type="image/x-icon">
+    <link href="{{ url_for('static', path='/layouts/content.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" >
 </head>
-<body>
 
+<body>
     <header>
-            <div class="header-nav">
-                <div class="nav-logo">
-                    <button onclick="window.location.href='/'">
-                        <img src="/static/image/crunchyLogoRSS.png" alt=""> 
+        <div class="header-nav">
+            <div class="nav-logo">
+                <a href="/">
+                    <img src="{{ url_for('static', path='/assets/images/crunchyLogoRSS.png') }}" alt=logo_crunchurollRSS"> 
+                </a>
+            </div>
+            <div class="nav-button">
+                <div class="lightmode">
+                    <button id="lightmode" aria-label="Alternar modo claro/escuro">
+                        <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
                     </button>
                 </div>
-                <div class="nav-button">
-                    <div class="login">
-                        <button window.location.href='#'>Login</button>
-                    </div>
-                    <div class="lightmode">
-                        <button id="lightmode">
-                            <img src="/static/image/brightness_dark.png" id="imgMode" alt="lightmode">
-                        </button>
-                    </div>
-                </div>
             </div>
+        </div>
     </header>
 
     <main class="post_content">
         <h1>{{ post.title }}</h1>
-        <h2>{{ post.description }}</h2>
         <img src="{{ post.media }}" alt="media">
-        {% if post.content is string() %}
+        {% if post.content is string %}
             <p class="text_color"> {{ post.content|safe }} </p>
         {% else %}
             {% for paragraph in post.content %}
@@ -52,10 +50,10 @@
             <p class="text_color">created by olavodotpy</p>
         </div>
         <div class="src">
-            <a href="https://github.com/olavodotpy/AnimeNews/tree/Master">Source code/credits</a>
+            <a href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>
         </div>
     </footer>
 
-    <script src="/static/js/lightMode.js"></script>
+    <script src="{{url_for('static', path='/scripts/lightMode.js') }}"></script>
 </body>
 </html>

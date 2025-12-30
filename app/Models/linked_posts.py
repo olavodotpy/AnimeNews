@@ -1,7 +1,8 @@
 from .node import Node
-from .exception import NodeNotFoundError
+from ..Exceptions.NodeNotFoundError import NodeNotFoundError
+from ..Exceptions.InvalidPostID import InvalidPostID
 
-from .formatter import formatter_text
+from ..Utils.formatter import formatter_text
 
 class LinkedPosts:
 
@@ -10,12 +11,12 @@ class LinkedPosts:
         self.tail = None
         self.hash_table = dict() 
 
-    def append(self, identify: int, title: str, 
-                    media_thumbnail: str | None, author: str, content: str,
-        ):
 
+    def append(self, identify: int, title: str, media_thumbnail: str | None,
+            author: str, content: str,
+        ):
         if identify in self.hash_table:
-            raise ValueError(f"ID {identify} already exists.")
+            raise NodeNotFoundError('posts with the same ID')
 
         new_node = Node(identify, title, media_thumbnail, author, content)
 
@@ -28,12 +29,12 @@ class LinkedPosts:
             self.tail.next = new_node
             self.tail = new_node
 
-    def prepend(self, identify: int, title: str, 
-                    media_thumbnail: str, author: str, content: str,
-        ):
 
+    def prepend(self, identify: int, title: str, media_thumbnail: str | None,
+                author: str, content: str,
+        ):
         if identify in self.hash_table:
-            raise ValueError(f"ID {identify} already exists.")
+            raise InvalidPostID
 
         new_node = Node(identify, title, media_thumbnail, author, content)
 
@@ -47,13 +48,14 @@ class LinkedPosts:
         self.head.prev = new_node
         self.head = new_node
 
-    def json_node_list(self, node=None) -> list:
+
+    def json(self, node=None) -> list:
         json_list = []
 
         current = self.head if node is None else node
 
         while current:
-            json_structure = {
+            post_structure = {
                 "id": current.identify,
                 "title": current.title,
                 "media": current.media_thumbnail,
@@ -61,21 +63,20 @@ class LinkedPosts:
                 "content": formatter_text(current.content),
             }
 
-            json_list.append(json_structure)
+            json_list.append(post_structure)
             current = current.next
 
         return json_list
 
-    def search_id(self, id_requested: int) -> dict:
 
+    def search(self, id_requested: int) -> dict:
         if id_requested not in self.hash_table:
             raise NodeNotFoundError
-        
-        node_pointer = self.hash_table.get(id_requested)
 
-        response = self.json_node_list(node_pointer)[0]
+        response = self.json(self.hash_table[id_requested])[0]
 
         return response
+
 
     def display(self):
         if self.head is None:
@@ -93,6 +94,7 @@ class LinkedPosts:
             print()
             current = current.next
 
+
     def display_backwards(self):
         if self.head is None:
             print("List is empty!")
@@ -108,3 +110,8 @@ class LinkedPosts:
             print(current.content)
             print()
             current = current.prev
+    
+
+    def is_full(self):
+        if self.head != None:
+            return True

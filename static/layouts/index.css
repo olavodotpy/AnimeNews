@@ -1,0 +1,10 @@
+html, body {
+    font-family: sans-serif;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: var(--color-backg);
+    color: var(--color);
+}

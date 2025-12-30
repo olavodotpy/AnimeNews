@@ -1,0 +1,94 @@
+:root {
+    --color-backg: #f7f7f7;
+    --color: #0e0e0e;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 0;
+    height: 100%;
+    padding: 0.5rem;
+}
+
+.header-nav .nav-logo a img {
+    display: inline;
+    z-index: 1;
+    float: left;
+    width: 400px;
+}
+
+.header-nav .nav-button {
+    display: flex;
+    justify-content: flex-end;
+    float: right;
+    z-index: 5;
+}        
+
+.nav-button .lightmode button, .nav-button .login a button {
+    border: 0;
+    padding: 1.5rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: var(--color-backg);
+}
+
+.nav-button .login a button {
+    background: #4169E1;
+    color: white;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: large;
+    width: 135px;
+    height: 65px;
+    border-radius: 100px;
+    font-weight: bold;
+    transition: .3s;
+} 
+
+.nav-button .login a button:hover {
+    cursor: pointer;
+    background-color: #ff6a01;
+}
+
+/* clearfix */
+.header-nav:before,
+.header-nav:after {
+    content: "";
+    display: block;
+} 
+.header-nav:after {
+    clear: both;
+}
+
+@media (max-width: 768px) {
+    .header-nav .nav-logo a img{
+        display: inline;
+        z-index: 1;
+        float: left;
+        width: 100px;
+    }
+
+    .nav-button .login a button {
+        background: #4169E1;
+        color: white;
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: large;
+        width: 100px;
+        height: 60px;
+        border-radius: 100px;
+        font-weight: bold;
+        transition: .3s;
+    } 
+}
+
+@media screen and (max-width: 1024px) {
+    .header-nav .nav-logo a img{
+        display: inline;
+        z-index: 1;
+        float: left;
+        width: 200px;
+    }
+}

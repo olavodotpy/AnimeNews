@@ -1,15 +1,7 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap'); */
-
-:root {
-    --card-backg:  #ffffff;
-    --card-info-color: #0e0e0e;
-}
-
 button:focus, input:focus, textarea:focus {
     outline: 0;
 }
 
-/* 
 nav {
     display: flex;
     flex-wrap: wrap;
@@ -17,23 +9,7 @@ nav {
     gap: 20px;
     padding: 20px;
     min-height: 100vh;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.blog_wrap {
-    width: 380px;
-    margin: 0;
-} */
-
-nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-    min-height: 100vh;
-    max-width: 1250px;
+    max-width: 1050px;
     margin: 0 auto;
 }
 
@@ -63,7 +39,7 @@ nav {
 }
 
 .blog_item:hover {
-    transform: translate(-10px);
+    transform: translateY(-10px);
 }
 
 .blog_item .thumb {
