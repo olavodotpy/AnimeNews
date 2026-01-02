@@ -12,8 +12,8 @@ class LinkedPosts:
         self.hash_table = dict() 
 
 
-    def append(self, identify: int, title: str, media_thumbnail: str | None,
-            author: str, content: str,
+    def append(self, identify: int, title: str | None, media_thumbnail: str | None,
+            author: str | None, content: str,
         ):
         if identify in self.hash_table:
             raise NodeNotFoundError('posts with the same ID')
@@ -30,8 +30,8 @@ class LinkedPosts:
             self.tail = new_node
 
 
-    def prepend(self, identify: int, title: str, media_thumbnail: str | None,
-                author: str, content: str,
+    def prepend(self, identify: int, title: str | None, media_thumbnail: str | None,
+                author: str | None, content: str,
         ):
         if identify in self.hash_table:
             raise InvalidPostID
@@ -110,7 +110,7 @@ class LinkedPosts:
             print(current.content)
             print()
             current = current.prev
-    
+
 
     def is_full(self):
         if self.head != None:

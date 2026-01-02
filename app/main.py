@@ -1,27 +1,22 @@
+from typing import Any
+
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 
 from .Routers import api
-from .Models.core import Fetch
-from .Models.linked_posts import LinkedPosts
+from .Services.core import Fetch
+from .Services.linked_posts import LinkedPosts
 
 from contextlib import asynccontextmanager 
 from threading import Thread
 
-# production:
-
-# import os
-# import uvicorn
-# from dotenv import load_dotenv
-
-# load_dotenv()
 
 fetch = Fetch()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    fetch.connect(LinkedPosts)
+    fetch.connect(target=LinkedPosts)
     Thread(target=fetch.update, args=(LinkedPosts,), kwargs={"timer": 100}, daemon=True).start()
     
     yield
@@ -30,7 +25,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(lifespan=lifespan)
 app.include_router(api.router)
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="app/templates")
 
 STATIC_URL = 'static'
 
@@ -64,9 +59,3 @@ async def posts(request: Request, post_id: int):
                 "post": response,    
             }
         )
-
-
-# production:
-
-# if __name__ == "__main__":
-#     uvicorn.run("main:app", host="0.0.0.0", port=os.getenv("PORT"), log_level="info")

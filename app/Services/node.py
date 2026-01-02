@@ -4,8 +4,10 @@ class Node:
     """
     Posts
     """
-    
-    def __init__(self, identify: int, title: str, media_thumbnail: str | None, author: str, content: str):
+
+    def __init__(self, identify: int, title: str | None, media_thumbnail: str | None,
+                author: str | None, content: str
+        ):
         self.next = None
         self.prev = None
         self.__identify = identify
