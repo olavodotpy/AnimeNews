@@ -1,6 +1,6 @@
 from .node import Node
 from ..Exceptions.NodeNotFoundError import NodeNotFoundError
-from ..Exceptions.InvalidPostID import InvalidPostID
+from ..Exceptions.InvalidPostGUID import InvalidPostGUID
 
 from ..Utils.formatter import formatter_text
 
@@ -12,38 +12,38 @@ class LinkedPosts:
         self.hash_table = dict() 
 
 
-    def append(self, identify: int, title: str | None, media_thumbnail: str | None,
-            author: str | None, content: str,
+    def append(self, guid: str, title: str | None, media_thumbnail: str | None,
+            author: str | None, content: str, link: str,
         ):
-        if identify in self.hash_table:
-            raise NodeNotFoundError('posts with the same ID')
+        if guid in self.hash_table:
+            raise InvalidPostGUID
 
-        new_node = Node(identify, title, media_thumbnail, author, content)
+        new_node = Node(guid, title, media_thumbnail, author, content, link)
 
         if self.head is None:
             self.head = self.tail = new_node
-            self.hash_table[new_node.identify] = new_node
+            self.hash_table[new_node.guid] = new_node
         else:
-            self.hash_table[new_node.identify] = new_node
+            self.hash_table[new_node.guid] = new_node
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
 
 
-    def prepend(self, identify: int, title: str | None, media_thumbnail: str | None,
-                author: str | None, content: str,
+    def prepend(self, guid: str, title: str | None, media_thumbnail: str | None,
+                author: str | None, content: str, link: str,
         ):
-        if identify in self.hash_table:
-            raise InvalidPostID
+        if guid in self.hash_table:
+            raise InvalidPostGUID
 
-        new_node = Node(identify, title, media_thumbnail, author, content)
+        new_node = Node(guid, title, media_thumbnail, author, content, link)
 
         if self.head is None:
             self.head = self.tail = new_node
-            self.hash_table[new_node.identify] = new_node
+            self.hash_table[new_node.guid] = new_node
             return
 
-        self.hash_table[new_node.identify] = new_node
+        self.hash_table[new_node.guid] = new_node
         new_node.next = self.head
         self.head.prev = new_node
         self.head = new_node
@@ -56,11 +56,12 @@ class LinkedPosts:
 
         while current:
             post_structure = {
-                "id": current.identify,
+                "guid": current.guid,
                 "title": current.title,
                 "media": current.media_thumbnail,
                 "author": current.author,
                 "content": formatter_text(current.content),
+                "link": current.link,
             }
 
             json_list.append(post_structure)
@@ -69,11 +70,11 @@ class LinkedPosts:
         return json_list
 
 
-    def search(self, id_requested: int) -> dict:
-        if id_requested not in self.hash_table:
+    def search(self, guid_requested: str) -> dict:
+        if guid_requested not in self.hash_table:
             raise NodeNotFoundError
 
-        response = self.json(self.hash_table[id_requested])[0]
+        response = self.json(self.hash_table[guid_requested])[0]
 
         return response
 
@@ -86,11 +87,12 @@ class LinkedPosts:
         current = self.head
 
         while current:
-            print(current.identify)
+            print(current.guid)
             print(current.title)
             print(current.media_thumbnail)
             print(current.author)
             print(current.content)
+            print(current.link)
             print()
             current = current.next
 
@@ -103,11 +105,12 @@ class LinkedPosts:
         current = self.tail
 
         while current:
-            print(current.identify)
+            print(current.guid)
             print(current.title)
             print(current.media_thumbnail)
             print(current.author)
             print(current.content)
+            print(current.link)
             print()
             current = current.prev
 

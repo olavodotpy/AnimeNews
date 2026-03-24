@@ -25,6 +25,11 @@
                         <button>Login</button>
                     </a>
                 </div>
+                <div class="login">
+                    <a href="/feeds/">
+                        <button>MAL</button>
+                    </a>
+                </div>
                 <div class="lightmode" aria-label="Alternar modo claro/escuro">
                     <button id="lightmode">
                         <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
@@ -38,11 +43,11 @@
         {% for post in posts %}
         <div class="blog_wrap">
             <div class="blog_item">
-                <a href="/post/{{ post.id }}" class="thumb">
+                <a href="/post/{{ post.guid }}" class="thumb">
                     <img loading="lazy" src="{{ post.media }}" alt="media">
                 </a>
                 <div class="blog_info">
-                    <h2><a href="/post/{{ post.id }}">{{ post.title }}</a></h2>
+                    <h2><a href="/post/{{ post.guid }}">{{ post.title }}</a></h2>
                 </div>
             </div>
         </div>

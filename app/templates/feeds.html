@@ -2,9 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ post.title }}</title>
-    <link href="{{ url_for('static', path='/layouts/content.css') }}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>ANN RSS</title>
     <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
@@ -16,13 +15,23 @@
     <header>
         <div class="header-nav">
             <div class="nav-logo">
-                <a href="/">
+                <a href="/feeds">
                     <img src="{{ url_for('static', path='/assets/images/crunchyLogoRSS.png') }}" alt=logo_crunchurollRSS"> 
                 </a>
             </div>
             <div class="nav-button">
-                <div class="lightmode">
-                    <button id="lightmode" aria-label="Alternar modo claro/escuro">
+                <div class="login">
+                    <a href="#">
+                        <button>Login</button>
+                    </a>
+                </div>
+                <div class="login">
+                    <a href="/">
+                        <button>Crunchyroll</button>
+                    </a>
+                </div>
+                <div class="lightmode" aria-label="Alternar modo claro/escuro">
+                    <button id="lightmode">
                         <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
                     </button>
                 </div>
@@ -30,27 +39,31 @@
         </div>
     </header>
 
-    <main class="post_content">
-        <h1>{{ post.title }}</h1>
-        <img src="{{ post.media }}" alt="media">
-        {% if post.content is string %}
-            <p class="text_color"> {{ post.content|safe }} </p>
-        {% else %}
-            {% for paragraph in post.content %}
-                <p class="text_color">{{ paragraph|safe }}</p>
-            {% endfor %}
-        {%endif%}
-    </main>
+    <nav>
+        {% for post in posts %}
+        <div class="blog_wrap">
+            <div class="blog_item">
+                <a href="{{ post.link }}" class="thumb">
+                    <img loading="lazy" src="{{ post.media }}" alt="media">
+                </a>
+                <div class="blog_info">
+                    <h2><a href="{{ post.link }}">{{ post.title }}</a></h2>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </nav>
 
     <footer>
-        <div class="authors">
-            <p class="text_color">Written by {{ post.author }}</p>
+        <div class="creator">
+            <p class="text_color">created by olavodotpy</p>
         </div>
         <div class="src">
             <a href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>
         </div>
     </footer>
 
-    <script src="{{url_for('static', path='/scripts/lightMode.js') }}"></script>
 </body>
+
+    <script src="{{url_for('static', path='/scripts/lightMode.js') }}"></script>
 </html>
