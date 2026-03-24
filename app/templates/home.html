@@ -8,7 +8,7 @@
     <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/index.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', path='/assets/images/favicon.ico') }}" rel="shortcut icon" type="image/x-icon" >
+    <link href="{{ url_for('static', path='/assets/images/favicon.png') }}" rel="shortcut icon" type="image/x-icon" >
 </head>
 
 <body>
@@ -25,9 +25,9 @@
                         <button>Login</button>
                     </a>
                 </div>
-                <div class="login">
+                <div class="feeds">
                     <a href="/feeds/">
-                        <button>MAL</button>
+                        <button class="MAL-button" data-MAL="MAL">My Anime List</button>
                     </a>
                 </div>
                 <div class="lightmode" aria-label="Alternar modo claro/escuro">
@@ -59,7 +59,7 @@
             <p class="text_color">created by olavodotpy</p>
         </div>
         <div class="src">
-            <a href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>
+            <a target="_blank" href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>
         </div>
     </footer>
 
