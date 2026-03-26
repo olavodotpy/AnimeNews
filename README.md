@@ -1,10 +1,10 @@
 # Anime Feeds
 
-A modern anime news aggregator that automatically tracks **Crunchyroll** releases via RSS.
+A modern anime news aggregator that automatically tracks releases from **Crunchyroll**, **My Anime List**, and **other** services via RSS.
 
-The project consumes the official Crunchyroll feed, processes the data, and displays the news in an organized and up-to-date manner.
+The project consumes the RSS feed, processes the data, and displays the news in an organized and up-to-date manner.
 
-Under active development — soon with support for Anime News Network (ANN) and Discord Bot.
+Under active development — Discord bot support coming soon.
 
 ![Python](https://img.shields.io/badge/Python-3.13-3776AB?style=flat&logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
@@ -14,7 +14,7 @@ Under active development — soon with support for Anime News Network (ANN) and 
 
 ## ✨ Current Features
 
-- Automatic consumption of Crunchyroll RSS feeds and My anime list
+- Automatic consumption of Feed RSS XML
 - Intelligent post processing and normalization
 - Generation of stable unique IDs (no collisions)
 - Automatic background updates
@@ -34,9 +34,9 @@ Under active development — soon with support for Anime News Network (ANN) and 
 
 ---
 
-## Como Executar o Projeto
+## How to Execute the Project
 
-### 1. Clone o repositório
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/olavodotpy/anime-feeds.git
@@ -60,7 +60,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. Rode a aplicação
+### 4. Run the application
 
 ```Bash
 uvicorn app.main:app --reload --port 8000
@@ -68,7 +68,7 @@ uvicorn app.main:app --reload --port 8000
 
 Access: http://127.0.0.1:8000
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 anime-feeds/
@@ -85,6 +85,6 @@ anime-feeds/
 └── README.md
 ```
 
-## Licença
+## License
 
 This project is under the MIT license.
