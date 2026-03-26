@@ -8,8 +8,7 @@
     align-items: center;
     justify-content: space-between;
     border: 0;
-    height: 100%;
-    padding: 0.5rem;
+    height: 25%;
 }
 
 .header-nav .nav-logo a img {
@@ -73,13 +72,11 @@
 
 .nav-button .feeds a .MAL-button:hover {
     color: rgb(78, 78, 255);
-    font-size: large;
     transition: .3s;
 }
 
 .nav-button .feeds a .CR-button:hover {
     color: rgb(255, 192, 75);
-    font-size: large;
     transition: .3s;
 }
 
@@ -114,7 +111,7 @@
         transition: .3s;
     }
 
-    .nav-button .feeds a .CR-button, .nav-button .feeds .MAL-button {
+    .nav-button .feeds a .CR-button, .nav-button .feeds a .MAL-button {
         font-size: 0;
         width: 100px;
         height: 60px;

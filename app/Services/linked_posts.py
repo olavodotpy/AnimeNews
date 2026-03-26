@@ -1,24 +1,27 @@
 from .node import Node
 from ..Exceptions.NodeNotFoundError import NodeNotFoundError
 from ..Exceptions.InvalidPostGUID import InvalidPostGUID
+from ..Schemas.schema import PostSchema
 
 from ..Utils.formatter import formatter_text
 
-class LinkedPosts:
 
+
+class LinkedPosts:
     def __init__(self) -> None: 
         self.head = None
         self.tail = None
-        self.hash_table = dict() 
+        self.hash_table = dict()
 
-
-    def append(self, guid: str, title: str | None, media_thumbnail: str | None,
-            author: str | None, content: str, link: str,
+    def append(self, source: str ,guid: str, title: str | None, image: str | None,
+                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
         ):
         if guid in self.hash_table:
             raise InvalidPostGUID
 
-        new_node = Node(guid, title, media_thumbnail, author, content, link)
+        new_node = Node(source, guid, title, image, author, content,
+                        description, link, url, cr_color, mal_color,
+                    )
 
         if self.head is None:
             self.head = self.tail = new_node
@@ -28,15 +31,20 @@ class LinkedPosts:
             new_node.prev = self.tail
             self.tail.next = new_node
             self.tail = new_node
+        
+        if len(self.hash_table) == 100:
+            self.hash_table.clear()
 
 
-    def prepend(self, guid: str, title: str | None, media_thumbnail: str | None,
-                author: str | None, content: str, link: str,
+    def prepend(self, source: str ,guid: str, title: str | None, image: str | None,
+                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
         ):
         if guid in self.hash_table:
             raise InvalidPostGUID
 
-        new_node = Node(guid, title, media_thumbnail, author, content, link)
+        new_node = Node(source, guid, title, image, author, content,
+                        description, link, url, cr_color, mal_color,
+                    )
 
         if self.head is None:
             self.head = self.tail = new_node
@@ -48,23 +56,52 @@ class LinkedPosts:
         self.head.prev = new_node
         self.head = new_node
 
+        if len(self.hash_table) == 100:
+            self.hash_table.clear()
 
-    def json(self, node=None) -> list:
+
+    def last_node_json(self, node: Node = None) -> list:
+        current = node
+
+        post = PostSchema(
+            source=current.source,
+            guid=current.guid,
+            title=current.title,
+            image=current.image,
+            author=current.author,
+            content=current.content,
+            description=current.description,
+            link=current.link,
+            url=current.url,
+            cr_color=current.cr_color,
+            mal_color=current.mal_color,
+        )
+
+        return post.model_dump()
+
+
+    def json(self) -> list:
         json_list = []
-
-        current = self.head if node is None else node
+        current = self.head
 
         while current:
-            post_structure = {
-                "guid": current.guid,
-                "title": current.title,
-                "media": current.media_thumbnail,
-                "author": current.author,
-                "content": formatter_text(current.content),
-                "link": current.link,
-            }
+            post = PostSchema(
+                source=current.source,
+                guid=current.guid,
+                title=current.title,
+                image=current.image,
+                author=current.author,
+                content=current.content,
+                description=current.description,
+                link=current.link,
+                url=current.url,
+                cr_color=current.cr_color,
+                mal_color=current.mal_color,
+            )
 
+            post_structure = post.model_dump()
             json_list.append(post_structure)
+            
             current = current.next
 
         return json_list
@@ -74,7 +111,7 @@ class LinkedPosts:
         if guid_requested not in self.hash_table:
             raise NodeNotFoundError
 
-        response = self.json(self.hash_table[guid_requested])[0]
+        response = self.last_node_json(self.hash_table[guid_requested])
 
         return response
 
@@ -89,9 +126,7 @@ class LinkedPosts:
         while current:
             print(current.guid)
             print(current.title)
-            print(current.media_thumbnail)
-            print(current.author)
-            print(current.content)
+            print(current.image)
             print(current.link)
             print()
             current = current.next
@@ -107,9 +142,7 @@ class LinkedPosts:
         while current:
             print(current.guid)
             print(current.title)
-            print(current.media_thumbnail)
-            print(current.author)
-            print(current.content)
+            print(current.image)
             print(current.link)
             print()
             current = current.prev

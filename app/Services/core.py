@@ -7,6 +7,7 @@ from ..Exceptions.CacheFailedError import CacheFailedError
 from ..Exceptions.FailedToCommunicateWithTheAPI import FailedToCommunicateWithTheAPI
 
 
+
 class Fetch:
     """
     Class responsible for fetching RSS feeds universally. 
@@ -55,16 +56,23 @@ class Fetch:
                 image = entry.media_content[0].get("url") or self.default_img
         except:
             image = self.default_img
+        
+        guid = self._generate_guid_sha256(entry)
 
         return {
-            "guid": self._generate_guid_sha256(entry),
+            "source": source,
+            "guid": guid,
             "title": entry.get("title", "Sem título"),
             "image": image,
             "author": entry.get("author", "Desconhecido"),
             "content": entry.get("content", [{}])[0].get("value", "")
                     or entry.get("description", "")
                     or entry.get("summary", ""),
+            "description": entry.get("description", ""),
             "link": entry.get("link", ""),
+            "url": f"http://127.0.0.1:8000/post/{guid}",
+            "cr_color": 0xFFA500,
+            "mal_color": 0x0000de,
         }
 
 
@@ -100,13 +108,19 @@ class Fetch:
             post_data = self._extract_post(entry, source)
 
             linked_posts.append(
+                post_data["source"],
                 post_data["guid"],
                 post_data["title"],
                 post_data["image"],
                 post_data["author"],
                 post_data["content"],
+                post_data["description"],
                 post_data["link"],
+                post_data["url"],
+                post_data["cr_color"],
+                post_data["mal_color"],
             )
+
         self.posts = linked_posts
 
 

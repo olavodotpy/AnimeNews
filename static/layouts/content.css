@@ -6,7 +6,7 @@ html, body {
 .post_content {
     max-width: 800px;
     margin: 0 auto;
-    padding: 1.3rem;
+    padding: .5rem;
 }
 
 .post_content img {
@@ -23,7 +23,7 @@ img {
 
 .post_content h1,
 .post_content h2 {
-    margin-top: 1.5em;
+    margin-top: 1em;
     margin-bottom: 0.5em;
     line-height: 1.58;
 }

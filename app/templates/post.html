@@ -32,7 +32,8 @@
 
     <main class="post_content">
         <h1>{{ post.title }}</h1>
-        <img src="{{ post.media }}" alt="media">
+        <img src="{{ post.image }}" alt="media">
+        <h3>{{ post.description }}</h3>
         {% if post.content is string %}
             <p class="text_color"> {{ post.content|safe }} </p>
         {% else %}

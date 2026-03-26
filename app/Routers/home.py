@@ -7,6 +7,8 @@ from ..Services.linked_posts import LinkedPosts
 from contextlib import asynccontextmanager 
 from threading import Thread
 
+
+
 fetch = Fetch()
 
 @asynccontextmanager
@@ -18,8 +20,6 @@ async def lifespan(app: FastAPI):
 
 
 router = APIRouter(lifespan=lifespan)
-
-
 templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/")

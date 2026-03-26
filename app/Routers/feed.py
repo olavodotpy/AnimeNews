@@ -7,6 +7,8 @@ from ..Services.linked_posts import LinkedPosts
 from contextlib import asynccontextmanager 
 from threading import Thread
 
+
+
 fetch = Fetch()
 
 @asynccontextmanager
@@ -33,16 +35,3 @@ async def home(request: Request):
                 "posts": response,
             }
         )
-
-
-# @router.get("/feed/post/{post_guid}")
-# async def post(request: Request, post_guid: str):
-#     response = fetch.posts.search(post_guid)
-
-#     return templates.TemplateResponse(
-#             "",
-#             {
-#                 "request": request,
-#                 "post": response,    
-#             }
-#         )

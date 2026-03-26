@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-    <title>Crunchyroll RSS</title>
+    <title>Anime Feeds</title>
     <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
@@ -44,10 +44,11 @@
         <div class="blog_wrap">
             <div class="blog_item">
                 <a href="/post/{{ post.guid }}" class="thumb">
-                    <img loading="lazy" src="{{ post.media }}" alt="media">
+                    <img loading="lazy" src="{{ post.image }}" alt="media">
                 </a>
                 <div class="blog_info">
                     <h2><a href="/post/{{ post.guid }}">{{ post.title }}</a></h2>
+                    <h3>{{ post.description }}</h3>
                 </div>
             </div>
         </div>
@@ -56,7 +57,7 @@
 
     <footer>
         <div class="creator">
-            <p class="text_color">created by olavodotpy</p>
+            <p class="text_color">Created by olavodotpy</p>
         </div>
         <div class="src">
             <a target="_blank" href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>

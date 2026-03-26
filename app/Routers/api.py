@@ -6,15 +6,22 @@ from ..Services.linked_posts import LinkedPosts
 router = APIRouter()
 fetch = Fetch()
 
-fetch.connect(target=LinkedPosts, source="crunchyroll") 
 
-@router.get("/api/posts")
-async def get_feeds():
+@router.get("/api/post/crunchyroll")
+async def get_feeds_crunchyroll():
+    
+    fetch.connect(target=LinkedPosts, source="crunchyroll") 
 
-    return fetch.posts.json()
+    last_post = fetch.posts.head
+
+    return fetch.posts.last_node_json(last_post)
 
 
-@router.get("/api/post/{post_guid}")
-async def get_feeds_by_id(post_guid: str):
+@router.get("/api/post/myanimelist")
+async def get_feeds_myanimelist():
+    
+    fetch.connect(target=LinkedPosts, source="myanimelist") 
 
-    return fetch.posts.search(post_guid)
+    last_post = fetch.posts.head
+
+    return fetch.posts.last_node_json(last_post)
