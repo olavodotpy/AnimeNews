@@ -1,17 +1,27 @@
 from fastapi import APIRouter
-from ..Models.core import Fetch
-from ..Models.linked_posts import LinkedPosts
+from ..Services.core import Fetch
+from ..Services.linked_posts import LinkedPosts
+
 
 router = APIRouter()
 fetch = Fetch()
 
 
-@router.get("/api/posts")
-async def get_feeds():
-    fetch.connect(LinkedPosts) 
-    return fetch.posts.json()
-
-@router.get("api/post/{post_id}")
-async def get_feeds_by_id(post_id: int):
+@router.get("/api/post/crunchyroll")
+async def get_feeds_crunchyroll():
     
-    return fetch.posts.search(post_id)
+    fetch.connect(target=LinkedPosts, source="crunchyroll") 
+
+    last_post = fetch.posts.head
+
+    return fetch.posts.last_node_json(last_post)
+
+
+@router.get("/api/post/myanimelist")
+async def get_feeds_myanimelist():
+    
+    fetch.connect(target=LinkedPosts, source="myanimelist") 
+
+    last_post = fetch.posts.head
+
+    return fetch.posts.last_node_json(last_post)

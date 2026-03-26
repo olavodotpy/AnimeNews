@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>My Anime List Feeds</title>
+    <link href="{{ url_for('static', path='/layouts/nav.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/cards.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/layouts/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', path='/assets/images/favicon.png') }}" rel="shortcut icon" type="image/x-icon" >
+</head>
+
+<body>
+    <header>
+        <div class="header-nav">
+            <div class="nav-logo">
+                <a href="/feeds">
+                    <img src="{{ url_for('static', path='/assets/images/MyAnimeListRSSLogo.png') }}" alt=logo_crunchurollRSS"> 
+                </a>
+            </div>
+            <div class="nav-button">
+                <div class="login">
+                    <a href="#">
+                        <button>Login</button>
+                    </a>
+                </div>
+                <div class="feeds">
+                    <a href="/">
+                        <button class="CR-button" data-CR="CR">Crunchyroll</button>
+                    </a>
+                </div>
+                <div class="lightmode" aria-label="dark mode/light mode">
+                    <button id="lightmode">
+                        <img src="{{ url_for('static', path='/assets/images/brightness_dark.png') }}" id="imgMode" alt="lightmode">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        {% for post in posts %}
+        <div class="blog_wrap">
+            <div class="blog_item">
+                <a target="_blank" href="{{ post.link }}" class="thumb">
+                    <img loading="lazy" src="{{ post.image }}" alt="media">
+                </a>
+                <div class="blog_info">
+                    <h2><a target="_blank" href="{{ post.link }}">{{ post.title }}</a></h2>
+                    <h3>{{ post.description }}</h3>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </nav>
+
+    <footer>
+        <div class="creator">
+            <p class="text_color">created by olavodotpy</p>
+        </div>
+        <div class="src">
+            <a target="_blank" href="https://github.com/olavodotpy/Crunchyroll-RSS">Source code/credits</a>
+        </div>
+    </footer>
+
+</body>
+
+    <script src="{{url_for('static', path='/scripts/lightMode.js') }}"></script>
+</html>

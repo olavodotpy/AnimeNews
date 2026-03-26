@@ -8,8 +8,7 @@
     align-items: center;
     justify-content: space-between;
     border: 0;
-    height: 100%;
-    padding: 0.5rem;
+    height: 25%;
 }
 
 .header-nav .nav-logo a img {
@@ -24,6 +23,7 @@
     justify-content: flex-end;
     float: right;
     z-index: 5;
+    padding: .5rem;
 }        
 
 .nav-button .lightmode button, .nav-button .login a button {
@@ -35,7 +35,7 @@
 }
 
 .nav-button .login a button {
-    background: #4169E1;
+    background: #5b5d62;
     color: white;
     letter-spacing: 1px;
     text-decoration: none;
@@ -49,7 +49,35 @@
 
 .nav-button .login a button:hover {
     cursor: pointer;
-    background-color: #ff6a01;
+    background-color: #9fa1a7;
+}
+
+.nav-button .lightmode button, .nav-button .feeds a button {
+    border: 0;
+    padding: 1.5rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: var(--color-backg);
+}
+
+.nav-button .feeds a .MAL-button {
+    color: rgb(45, 45, 203);
+    font-size: medium;
+}
+
+.nav-button .feeds a .CR-button {
+    color: orange;
+    font-size: medium;
+}
+
+.nav-button .feeds a .MAL-button:hover {
+    color: rgb(78, 78, 255);
+    transition: .3s;
+}
+
+.nav-button .feeds a .CR-button:hover {
+    color: rgb(255, 192, 75);
+    transition: .3s;
 }
 
 /* clearfix */
@@ -81,7 +109,24 @@
         border-radius: 100px;
         font-weight: bold;
         transition: .3s;
-    } 
+    }
+
+    .nav-button .feeds a .CR-button, .nav-button .feeds a .MAL-button {
+        font-size: 0;
+        width: 100px;
+        height: 60px;
+        border-radius: 40px;
+    }
+    
+    .nav-button .feeds a .MAL-button::after {
+        content: attr(data-MAL);
+        font-size: 16px;
+    }
+    
+    .nav-button .feeds a .CR-button::after {
+        content: attr(data-CR);
+        font-size: 16px;
+    }
 }
 
 @media screen and (max-width: 1024px) {

@@ -1,0 +1,13 @@
+# production:
+
+# import os
+# import uvicorn
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+
+# production:
+
+# if __name__ == "__main__":
+#     uvicorn.run("app/main:app", host="0.0.0.0", port=os.getenv("PORT"), log_level="info")
