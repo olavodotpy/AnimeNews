@@ -14,7 +14,8 @@ class LinkedPosts:
         self.hash_table = dict()
 
     def append(self, source: str ,guid: str, title: str | None, image: str | None,
-                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
+                author: str | None, content: str | None, description: str | None,
+                link: str | None, url: str | None, cr_color: str | None, mal_color: str | None
         ):
         if guid in self.hash_table:
             raise InvalidPostGUID
@@ -37,7 +38,8 @@ class LinkedPosts:
 
 
     def prepend(self, source: str ,guid: str, title: str | None, image: str | None,
-                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
+                author: str | None, content: str | None, description: str | None,
+                link: str | None, url: str | None, cr_color: str | None, mal_color: str | None
         ):
         if guid in self.hash_table:
             raise InvalidPostGUID

@@ -4,24 +4,24 @@ from ..Services.linked_posts import LinkedPosts
 
 
 router = APIRouter()
-fetch = Fetch()
+fetch_cr = Fetch()
+fetch_mal = Fetch()
+
+@router.get("/api/last/crunchyroll")
+async def get_lastest_feeds():
+
+    fetch_cr.connect(target=LinkedPosts, source="crunchyroll") 
+
+    last_post_cr = fetch_cr.posts.head
+
+    return fetch_cr.posts.last_node_json(last_post_cr)
 
 
-@router.get("/api/post/crunchyroll")
-async def get_feeds_crunchyroll():
-    
-    fetch.connect(target=LinkedPosts, source="crunchyroll") 
+@router.get("/api/last/myanimelist")
+async def get_lastest_feeds():
 
-    last_post = fetch.posts.head
+    fetch_mal.connect(target=LinkedPosts, source="myanimelist")
 
-    return fetch.posts.last_node_json(last_post)
+    last_post_mal = fetch_mal.posts.head
 
-
-@router.get("/api/post/myanimelist")
-async def get_feeds_myanimelist():
-    
-    fetch.connect(target=LinkedPosts, source="myanimelist") 
-
-    last_post = fetch.posts.head
-
-    return fetch.posts.last_node_json(last_post)
+    return fetch_mal.posts.last_node_json(last_post_mal)

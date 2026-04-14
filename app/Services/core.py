@@ -100,7 +100,11 @@ class Fetch:
             url = self.feeds[source]
             entries = self._fetch_feed(url)
         except Exception as e:
-            linked_posts.append(404, f"<ERROR> {source.upper()} API", None, None, f"Error: {e}", "")
+            linked_posts.append(
+                "", "404", f"<ERROR> {source.upper()} API", "", None, f"Error: {e}", "",
+                None, None, None, None
+            )
+
             self.posts = linked_posts
             return
 
