@@ -19,7 +19,7 @@ Under active development — Discord bot support coming soon.
 - Generation of stable unique IDs (no collisions)
 - Automatic background updates
 - Responsive web interface with Jinja2
-- Public JSON API (`/api/post/crunchyroll` and `/api/post/myanimelist`)
+- Public JSON API (`/api/last/crunchyroll` and `/api/last/myanimelist`)
 - Modular and scalable structure
 
 ---
@@ -39,7 +39,7 @@ Under active development — Discord bot support coming soon.
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/olavodotpy/anime-feeds.git
+git clone https://github.com/olavob/anime-feeds.git
 
 cd anime-feeds
 
@@ -76,7 +76,7 @@ anime-feeds/
 │   ├── main.py                 # FastAPI configuration + lifespan
 │   ├── Execeptions/            # Custom exceptions
 │   ├── Services/
-│   │   └── fetch.py            # Fetching and processing feeds
+│   │   └── core.py             # Fetching and processing feeds
 │   ├── Routers/                # Routes (home, api, feeds...)
 │   ├── Schemas/                # Pydantic templates
 │   ├── Templates/              # HTML + Jinja2
