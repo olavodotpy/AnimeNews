@@ -8,14 +8,20 @@ from ..Utils.formatter import formatter_text
 
 
 class LinkedPosts:
+    """
+    A Link Posts class with the attributes head, tail, and hash_table.
+    The structure for loading the template is generated.
+    """
     def __init__(self) -> None: 
         self.head = None
         self.tail = None
         self.hash_table = dict()
 
     def append(self, source: str ,guid: str, title: str | None, image: str | None,
-                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
+                author: str | None, content: str | None, description: str | None,
+                link: str | None, url: str | None, cr_color: str | None, mal_color: str | None
         ):
+        """The append method adds the posts in node format to LinkedPosts and caches them using the hash_table dictionary."""
         if guid in self.hash_table:
             raise InvalidPostGUID
 
@@ -37,7 +43,8 @@ class LinkedPosts:
 
 
     def prepend(self, source: str ,guid: str, title: str | None, image: str | None,
-                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
+                author: str | None, content: str | None, description: str | None,
+                link: str | None, url: str | None, cr_color: str | None, mal_color: str | None
         ):
         if guid in self.hash_table:
             raise InvalidPostGUID

@@ -3,11 +3,10 @@ from ..Exceptions.InvalidPostGUID import InvalidPostGUID
 
 
 class Node:
-    """
-    Posts
-    """
-    def __init__(self, source: str ,guid: str, title: str | None, image: str | None,
-                author: str | None, content: str, description: str, link: str, url: str, cr_color: str, mal_color: str,
+    """Class Node that organizes and stores each section of the post."""
+    def __init__(self, source: str, guid: str, title: str | None, image: str | None,
+                author: str | None, content: str | None, description: str, link: str | None,
+                url: str | None, cr_color: str | None, mal_color: str | None
         ):
         self.next = None
         self.prev = None
@@ -31,4 +30,7 @@ class Node:
 
     @guid.setter
     def guid(self, new_guid: str):
+        """
+            It is not possible to change the unique GUID of posts.
+        """
         raise InvalidPostGUID
